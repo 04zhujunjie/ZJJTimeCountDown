@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="HomeGoodsHeader">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="—— 产品展示 ——" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jF-Nw-4kh" userLabel="btnView">
+                    <rect key="frame" x="75" y="5" width="186" height="41"/>
+                    <color key="backgroundColor" red="0.99607843139999996" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.53518105335663491" green="0.53704366704139173" blue="0.54263150809566252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="2jF-Nw-4kh" secondAttribute="trailing" constant="59" id="723-PE-fWo"/>
+                <constraint firstAttribute="bottom" secondItem="2jF-Nw-4kh" secondAttribute="bottom" constant="4" id="bYA-hA-n3V"/>
+                <constraint firstItem="2jF-Nw-4kh" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="5" id="lgh-Wp-6Jb"/>
+                <constraint firstItem="2jF-Nw-4kh" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="75" id="vFH-Rq-JsU"/>
+            </constraints>
+            <point key="canvasLocation" x="144" y="264"/>
+        </collectionReusableView>
+    </objects>
+</document>
