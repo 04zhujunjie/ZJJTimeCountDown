@@ -10,8 +10,6 @@
 
 @implementation HomeGoodsHeader
 
-- (void)awakeFromNib {
-    // Initialization code
-}
+
 
 @end

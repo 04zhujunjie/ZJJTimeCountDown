@@ -34,10 +34,9 @@ static NSString * const kCollectionViewID = @"collectionView";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    countDown = [[ZJJTimeCountDown alloc] initWithScrollView:self.collectionView dataList:self.dataList timeKey:@"endTime"];
+    countDown = [[ZJJTimeCountDown alloc] initWithScrollView:self.collectionView dataList:self.dataList];
     //    countDown.jj_description = @"hhhhhh";
     countDown.delegate = self;
-    countDown.editingStyle = ZJJCountDownCellEditingAutomaticallyDeleted;
     // Do any additional setup after loading the view.
 }
 
@@ -57,7 +56,7 @@ static NSString * const kCollectionViewID = @"collectionView";
     TimeModel *model = self.dataList[indexPath.row];
     cell.timeLabel.adjustsFontSizeToFitWidth = YES;
     cell.timeLabel.indexPath = indexPath;
-    cell.timeLabel.text = [countDown countDownWithModel:model];
+    cell.timeLabel.text = [countDown countDownWithModel:model timeLabel:cell.timeLabel];
    
     
     return cell;
@@ -181,13 +180,6 @@ static NSString * const kCollectionViewID = @"collectionView";
         [_dataList addObject:model];
     }
     
-}
-
-
-
-- (void)countDownWithAutomaticallyDeleteModel:(id)model label:(ZJJTimeCountDownLabel *)label{
-    
-    NSLog(@"====%@=====",[model valueForKey:@"endTime"]);
 }
 
 

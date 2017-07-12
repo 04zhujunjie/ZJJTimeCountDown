@@ -10,7 +10,6 @@
 
 @interface ZJJTimeCountDownDateTool : NSObject
 
-+ (NSString *)getNowTimeWithStartTimeTamp:(NSInteger )startTimeTamp endTimeTamp:(NSInteger)endTimeTamp description:(NSString *)description;
 + (long long)getTimeTampWithNormal:(NSString *)normalTimeStr;
 
 + (long long)getTimeTampWithPureNumber:(NSString *)pureNumberTimeStr;

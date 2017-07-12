@@ -16,9 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UINib*nib = [UINib nibWithNibName:NSStringFromClass([TableViewCell class]) bundle:nil];
-    [self.tableView registerNib:nib forCellReuseIdentifier:@"one"];
-    self.tableView.rowHeight = 110;
+  
+    self.tableView.rowHeight = 80;
     [self setupLess];
 }
 
@@ -59,7 +58,7 @@
 - (ZJJTimeCountDown *)countDown{
 
     if (!_countDown) {
-        _countDown = [[ZJJTimeCountDown alloc] initWithScrollView:self.tableView dataList:self.dataList timeKey:@"endTime"];
+        _countDown = [[ZJJTimeCountDown alloc] initWithScrollView:self.tableView dataList:self.dataList];
         _countDown.delegate = self;
     }
     return _countDown;

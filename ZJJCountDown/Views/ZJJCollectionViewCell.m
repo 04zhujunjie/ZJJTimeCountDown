@@ -12,6 +12,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.timeLabel.timeKey = @"endTime";
     // Initialization code
 }
 

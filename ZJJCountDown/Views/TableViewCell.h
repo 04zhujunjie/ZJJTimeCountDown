@@ -12,5 +12,6 @@
 @interface TableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet ZJJTimeCountDownLabel *timeLabel;
+@property (weak, nonatomic) IBOutlet ZJJTimeCountDownLabel *twoTimeLabel;
 
 @end

@@ -9,24 +9,13 @@
 /* Begin PBXBuildFile section */
 		8BB533D21F1313C700A21086 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB533D11F1313C700A21086 /* main.m */; };
 		8BB533D51F1313C700A21086 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB533D41F1313C700A21086 /* AppDelegate.m */; };
-		8BB533D81F1313C700A21086 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB533D71F1313C700A21086 /* ViewController.m */; };
 		8BB533DB1F1313C700A21086 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BB533D91F1313C700A21086 /* Main.storyboard */; };
 		8BB533DD1F1313C700A21086 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BB533DC1F1313C700A21086 /* Assets.xcassets */; };
 		8BB533E01F1313C700A21086 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BB533DE1F1313C700A21086 /* LaunchScreen.storyboard */; };
 		8BB533EB1F1313C700A21086 /* ZJJCountDownTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB533EA1F1313C700A21086 /* ZJJCountDownTests.m */; };
 		8BB533F61F1313C700A21086 /* ZJJCountDownUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB533F51F1313C700A21086 /* ZJJCountDownUITests.m */; };
-		8BB5340C1F131F1E00A21086 /* TimeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB5340B1F131F1E00A21086 /* TimeModel.m */; };
-		8BB5340F1F131F4A00A21086 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB5340E1F131F4A00A21086 /* TableViewController.m */; };
-		8BB534131F131F7400A21086 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB534111F131F7400A21086 /* TableViewCell.m */; };
-		8BB534141F131F7400A21086 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BB534121F131F7400A21086 /* TableViewCell.xib */; };
-		8BB534191F1469F700A21086 /* TableViewGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB534181F1469F700A21086 /* TableViewGroupController.m */; };
 		8BB534221F147E6300A21086 /* JMWaterflowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB5341F1F147E6300A21086 /* JMWaterflowLayout.m */; };
 		8BB534231F147E6300A21086 /* UIViewController+JMCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB534211F147E6300A21086 /* UIViewController+JMCollectionView.m */; };
-		8BB534261F147E8D00A21086 /* ZJJCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB534251F147E8D00A21086 /* ZJJCollectionViewController.m */; };
-		8BB5342A1F147EBD00A21086 /* HomeGoodsHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB534281F147EBD00A21086 /* HomeGoodsHeader.m */; };
-		8BB5342B1F147EBD00A21086 /* HomeGoodsHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BB534291F147EBD00A21086 /* HomeGoodsHeader.xib */; };
-		8BB534321F149D9100A21086 /* ZJJCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB534301F149D9100A21086 /* ZJJCollectionViewCell.m */; };
-		8BB534331F149D9100A21086 /* ZJJCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BB534311F149D9100A21086 /* ZJJCollectionViewCell.xib */; };
 		8BB5345A1F14A19D00A21086 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB534371F14A19D00A21086 /* AFHTTPSessionManager.m */; };
 		8BB5345B1F14A19D00A21086 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB5343A1F14A19D00A21086 /* AFNetworkReachabilityManager.m */; };
 		8BB5345C1F14A19D00A21086 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB5343C1F14A19D00A21086 /* AFSecurityPolicy.m */; };
@@ -42,10 +31,25 @@
 		8BB534681F14A19D00A21086 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB534551F14A19D00A21086 /* UIProgressView+AFNetworking.m */; };
 		8BB534691F14A19D00A21086 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB534571F14A19D00A21086 /* UIRefreshControl+AFNetworking.m */; };
 		8BB5346A1F14A19D00A21086 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB534591F14A19D00A21086 /* UIWebView+AFNetworking.m */; };
-		8BB5346D1F14A30900A21086 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB5346C1F14A30900A21086 /* BaseTableViewController.m */; };
 		8BB534821F14D89500A21086 /* ZJJTimeCountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB5347D1F14D89500A21086 /* ZJJTimeCountDown.m */; };
 		8BB534831F14D89500A21086 /* ZJJTimeCountDownDateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB5347F1F14D89500A21086 /* ZJJTimeCountDownDateTool.m */; };
 		8BB534841F14D89500A21086 /* ZJJTimeCountDownLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB534811F14D89500A21086 /* ZJJTimeCountDownLabel.m */; };
+		8BB534AA1F1609FE00A21086 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB534901F1609FE00A21086 /* BaseTableViewController.m */; };
+		8BB534AB1F1609FE00A21086 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB534921F1609FE00A21086 /* TableViewController.m */; };
+		8BB534AC1F1609FE00A21086 /* TableViewGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB534941F1609FE00A21086 /* TableViewGroupController.m */; };
+		8BB534AD1F1609FE00A21086 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB534961F1609FE00A21086 /* ViewController.m */; };
+		8BB534AE1F1609FE00A21086 /* ZJJCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB534981F1609FE00A21086 /* ZJJCollectionViewController.m */; };
+		8BB534AF1F1609FE00A21086 /* TimeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB5349B1F1609FE00A21086 /* TimeModel.m */; };
+		8BB534B01F1609FE00A21086 /* HomeGoodsHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB5349E1F1609FE00A21086 /* HomeGoodsHeader.m */; };
+		8BB534B11F1609FE00A21086 /* HomeGoodsHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BB5349F1F1609FE00A21086 /* HomeGoodsHeader.xib */; };
+		8BB534B21F1609FE00A21086 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB534A11F1609FE00A21086 /* TableViewCell.m */; };
+		8BB534B31F1609FE00A21086 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BB534A21F1609FE00A21086 /* TableViewCell.xib */; };
+		8BB534B41F1609FE00A21086 /* ZJJCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB534A41F1609FE00A21086 /* ZJJCollectionViewCell.m */; };
+		8BB534B51F1609FE00A21086 /* ZJJCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BB534A51F1609FE00A21086 /* ZJJCollectionViewCell.xib */; };
+		8BB534B61F1609FE00A21086 /* ZJJOneTimeCountDownLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB534A71F1609FE00A21086 /* ZJJOneTimeCountDownLabel.m */; };
+		8BB534B71F1609FE00A21086 /* ZJJTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB534A91F1609FE00A21086 /* ZJJTableViewCell.m */; };
+		8BB534BB1F160F9800A21086 /* ZJJVerificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB534B91F160F9800A21086 /* ZJJVerificationController.m */; };
+		8BB534BC1F160F9800A21086 /* ZJJVerificationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BB534BA1F160F9800A21086 /* ZJJVerificationController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,8 +74,6 @@
 		8BB533D11F1313C700A21086 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8BB533D31F1313C700A21086 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8BB533D41F1313C700A21086 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8BB533D61F1313C700A21086 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8BB533D71F1313C700A21086 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8BB533DA1F1313C700A21086 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8BB533DC1F1313C700A21086 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8BB533DF1F1313C700A21086 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -82,27 +84,10 @@
 		8BB533F11F1313C700A21086 /* ZJJCountDownUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZJJCountDownUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BB533F51F1313C700A21086 /* ZJJCountDownUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJJCountDownUITests.m; sourceTree = "<group>"; };
 		8BB533F71F1313C700A21086 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8BB5340A1F131F1E00A21086 /* TimeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeModel.h; sourceTree = "<group>"; };
-		8BB5340B1F131F1E00A21086 /* TimeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeModel.m; sourceTree = "<group>"; };
-		8BB5340D1F131F4A00A21086 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
-		8BB5340E1F131F4A00A21086 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
-		8BB534101F131F7400A21086 /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
-		8BB534111F131F7400A21086 /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
-		8BB534121F131F7400A21086 /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
-		8BB534171F1469F700A21086 /* TableViewGroupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewGroupController.h; sourceTree = "<group>"; };
-		8BB534181F1469F700A21086 /* TableViewGroupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewGroupController.m; sourceTree = "<group>"; };
 		8BB5341E1F147E6300A21086 /* JMWaterflowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMWaterflowLayout.h; sourceTree = "<group>"; };
 		8BB5341F1F147E6300A21086 /* JMWaterflowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMWaterflowLayout.m; sourceTree = "<group>"; };
 		8BB534201F147E6300A21086 /* UIViewController+JMCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JMCollectionView.h"; sourceTree = "<group>"; };
 		8BB534211F147E6300A21086 /* UIViewController+JMCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JMCollectionView.m"; sourceTree = "<group>"; };
-		8BB534241F147E8D00A21086 /* ZJJCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJJCollectionViewController.h; sourceTree = "<group>"; };
-		8BB534251F147E8D00A21086 /* ZJJCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJJCollectionViewController.m; sourceTree = "<group>"; };
-		8BB534271F147EBD00A21086 /* HomeGoodsHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeGoodsHeader.h; sourceTree = "<group>"; };
-		8BB534281F147EBD00A21086 /* HomeGoodsHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeGoodsHeader.m; sourceTree = "<group>"; };
-		8BB534291F147EBD00A21086 /* HomeGoodsHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeGoodsHeader.xib; sourceTree = "<group>"; };
-		8BB5342F1F149D9100A21086 /* ZJJCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJJCollectionViewCell.h; sourceTree = "<group>"; };
-		8BB534301F149D9100A21086 /* ZJJCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJJCollectionViewCell.m; sourceTree = "<group>"; };
-		8BB534311F149D9100A21086 /* ZJJCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJJCollectionViewCell.xib; sourceTree = "<group>"; };
 		8BB534361F14A19D00A21086 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
 		8BB534371F14A19D00A21086 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		8BB534381F14A19D00A21086 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
@@ -136,14 +121,40 @@
 		8BB534571F14A19D00A21086 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		8BB534581F14A19D00A21086 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		8BB534591F14A19D00A21086 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
-		8BB5346B1F14A30900A21086 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
-		8BB5346C1F14A30900A21086 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
 		8BB5347C1F14D89500A21086 /* ZJJTimeCountDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJJTimeCountDown.h; sourceTree = "<group>"; };
 		8BB5347D1F14D89500A21086 /* ZJJTimeCountDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJJTimeCountDown.m; sourceTree = "<group>"; };
 		8BB5347E1F14D89500A21086 /* ZJJTimeCountDownDateTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJJTimeCountDownDateTool.h; sourceTree = "<group>"; };
 		8BB5347F1F14D89500A21086 /* ZJJTimeCountDownDateTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJJTimeCountDownDateTool.m; sourceTree = "<group>"; };
 		8BB534801F14D89500A21086 /* ZJJTimeCountDownLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJJTimeCountDownLabel.h; sourceTree = "<group>"; };
 		8BB534811F14D89500A21086 /* ZJJTimeCountDownLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJJTimeCountDownLabel.m; sourceTree = "<group>"; };
+		8BB5348F1F1609FE00A21086 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
+		8BB534901F1609FE00A21086 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
+		8BB534911F1609FE00A21086 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		8BB534921F1609FE00A21086 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		8BB534931F1609FE00A21086 /* TableViewGroupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewGroupController.h; sourceTree = "<group>"; };
+		8BB534941F1609FE00A21086 /* TableViewGroupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewGroupController.m; sourceTree = "<group>"; };
+		8BB534951F1609FE00A21086 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		8BB534961F1609FE00A21086 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		8BB534971F1609FE00A21086 /* ZJJCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJJCollectionViewController.h; sourceTree = "<group>"; };
+		8BB534981F1609FE00A21086 /* ZJJCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJJCollectionViewController.m; sourceTree = "<group>"; };
+		8BB5349A1F1609FE00A21086 /* TimeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeModel.h; sourceTree = "<group>"; };
+		8BB5349B1F1609FE00A21086 /* TimeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeModel.m; sourceTree = "<group>"; };
+		8BB5349D1F1609FE00A21086 /* HomeGoodsHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeGoodsHeader.h; sourceTree = "<group>"; };
+		8BB5349E1F1609FE00A21086 /* HomeGoodsHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeGoodsHeader.m; sourceTree = "<group>"; };
+		8BB5349F1F1609FE00A21086 /* HomeGoodsHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeGoodsHeader.xib; sourceTree = "<group>"; };
+		8BB534A01F1609FE00A21086 /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
+		8BB534A11F1609FE00A21086 /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
+		8BB534A21F1609FE00A21086 /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		8BB534A31F1609FE00A21086 /* ZJJCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJJCollectionViewCell.h; sourceTree = "<group>"; };
+		8BB534A41F1609FE00A21086 /* ZJJCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJJCollectionViewCell.m; sourceTree = "<group>"; };
+		8BB534A51F1609FE00A21086 /* ZJJCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJJCollectionViewCell.xib; sourceTree = "<group>"; };
+		8BB534A61F1609FE00A21086 /* ZJJOneTimeCountDownLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJJOneTimeCountDownLabel.h; sourceTree = "<group>"; };
+		8BB534A71F1609FE00A21086 /* ZJJOneTimeCountDownLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJJOneTimeCountDownLabel.m; sourceTree = "<group>"; };
+		8BB534A81F1609FE00A21086 /* ZJJTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJJTableViewCell.h; sourceTree = "<group>"; };
+		8BB534A91F1609FE00A21086 /* ZJJTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJJTableViewCell.m; sourceTree = "<group>"; };
+		8BB534B81F160F9800A21086 /* ZJJVerificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJJVerificationController.h; sourceTree = "<group>"; };
+		8BB534B91F160F9800A21086 /* ZJJVerificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJJVerificationController.m; sourceTree = "<group>"; };
+		8BB534BA1F160F9800A21086 /* ZJJVerificationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJJVerificationController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,32 +205,14 @@
 		8BB533CF1F1313C700A21086 /* ZJJCountDown */ = {
 			isa = PBXGroup;
 			children = (
+				8BB5348E1F1609FE00A21086 /* Controllers */,
+				8BB534991F1609FE00A21086 /* Models */,
+				8BB5349C1F1609FE00A21086 /* Views */,
 				8BB5347B1F14D89500A21086 /* ZJJTimeCountDown */,
 				8BB534341F14A19D00A21086 /* AFNetworking */,
 				8BB5341D1F147E6300A21086 /* CollectionView */,
 				8BB533D31F1313C700A21086 /* AppDelegate.h */,
 				8BB533D41F1313C700A21086 /* AppDelegate.m */,
-				8BB533D61F1313C700A21086 /* ViewController.h */,
-				8BB533D71F1313C700A21086 /* ViewController.m */,
-				8BB5340A1F131F1E00A21086 /* TimeModel.h */,
-				8BB5340B1F131F1E00A21086 /* TimeModel.m */,
-				8BB5340D1F131F4A00A21086 /* TableViewController.h */,
-				8BB5340E1F131F4A00A21086 /* TableViewController.m */,
-				8BB534171F1469F700A21086 /* TableViewGroupController.h */,
-				8BB534181F1469F700A21086 /* TableViewGroupController.m */,
-				8BB5346B1F14A30900A21086 /* BaseTableViewController.h */,
-				8BB5346C1F14A30900A21086 /* BaseTableViewController.m */,
-				8BB534101F131F7400A21086 /* TableViewCell.h */,
-				8BB534111F131F7400A21086 /* TableViewCell.m */,
-				8BB534121F131F7400A21086 /* TableViewCell.xib */,
-				8BB534241F147E8D00A21086 /* ZJJCollectionViewController.h */,
-				8BB534251F147E8D00A21086 /* ZJJCollectionViewController.m */,
-				8BB5342F1F149D9100A21086 /* ZJJCollectionViewCell.h */,
-				8BB534301F149D9100A21086 /* ZJJCollectionViewCell.m */,
-				8BB534311F149D9100A21086 /* ZJJCollectionViewCell.xib */,
-				8BB534271F147EBD00A21086 /* HomeGoodsHeader.h */,
-				8BB534281F147EBD00A21086 /* HomeGoodsHeader.m */,
-				8BB534291F147EBD00A21086 /* HomeGoodsHeader.xib */,
 				8BB533D91F1313C700A21086 /* Main.storyboard */,
 				8BB533DC1F1313C700A21086 /* Assets.xcassets */,
 				8BB533DE1F1313C700A21086 /* LaunchScreen.storyboard */,
@@ -335,6 +328,55 @@
 			path = ZJJTimeCountDown;
 			sourceTree = "<group>";
 		};
+		8BB5348E1F1609FE00A21086 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8BB534951F1609FE00A21086 /* ViewController.h */,
+				8BB534961F1609FE00A21086 /* ViewController.m */,
+				8BB5348F1F1609FE00A21086 /* BaseTableViewController.h */,
+				8BB534901F1609FE00A21086 /* BaseTableViewController.m */,
+				8BB534911F1609FE00A21086 /* TableViewController.h */,
+				8BB534921F1609FE00A21086 /* TableViewController.m */,
+				8BB534931F1609FE00A21086 /* TableViewGroupController.h */,
+				8BB534941F1609FE00A21086 /* TableViewGroupController.m */,
+				8BB534971F1609FE00A21086 /* ZJJCollectionViewController.h */,
+				8BB534981F1609FE00A21086 /* ZJJCollectionViewController.m */,
+				8BB534B81F160F9800A21086 /* ZJJVerificationController.h */,
+				8BB534B91F160F9800A21086 /* ZJJVerificationController.m */,
+				8BB534BA1F160F9800A21086 /* ZJJVerificationController.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8BB534991F1609FE00A21086 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8BB5349A1F1609FE00A21086 /* TimeModel.h */,
+				8BB5349B1F1609FE00A21086 /* TimeModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8BB5349C1F1609FE00A21086 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8BB5349D1F1609FE00A21086 /* HomeGoodsHeader.h */,
+				8BB5349E1F1609FE00A21086 /* HomeGoodsHeader.m */,
+				8BB5349F1F1609FE00A21086 /* HomeGoodsHeader.xib */,
+				8BB534A01F1609FE00A21086 /* TableViewCell.h */,
+				8BB534A11F1609FE00A21086 /* TableViewCell.m */,
+				8BB534A21F1609FE00A21086 /* TableViewCell.xib */,
+				8BB534A31F1609FE00A21086 /* ZJJCollectionViewCell.h */,
+				8BB534A41F1609FE00A21086 /* ZJJCollectionViewCell.m */,
+				8BB534A51F1609FE00A21086 /* ZJJCollectionViewCell.xib */,
+				8BB534A61F1609FE00A21086 /* ZJJOneTimeCountDownLabel.h */,
+				8BB534A71F1609FE00A21086 /* ZJJOneTimeCountDownLabel.m */,
+				8BB534A81F1609FE00A21086 /* ZJJTableViewCell.h */,
+				8BB534A91F1609FE00A21086 /* ZJJTableViewCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -444,11 +486,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BB5342B1F147EBD00A21086 /* HomeGoodsHeader.xib in Resources */,
-				8BB534331F149D9100A21086 /* ZJJCollectionViewCell.xib in Resources */,
 				8BB533E01F1313C700A21086 /* LaunchScreen.storyboard in Resources */,
-				8BB534141F131F7400A21086 /* TableViewCell.xib in Resources */,
+				8BB534B51F1609FE00A21086 /* ZJJCollectionViewCell.xib in Resources */,
+				8BB534B31F1609FE00A21086 /* TableViewCell.xib in Resources */,
 				8BB533DD1F1313C700A21086 /* Assets.xcassets in Resources */,
+				8BB534BC1F160F9800A21086 /* ZJJVerificationController.xib in Resources */,
+				8BB534B11F1609FE00A21086 /* HomeGoodsHeader.xib in Resources */,
 				8BB533DB1F1313C700A21086 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -474,33 +517,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BB534321F149D9100A21086 /* ZJJCollectionViewCell.m in Sources */,
-				8BB5346D1F14A30900A21086 /* BaseTableViewController.m in Sources */,
-				8BB5342A1F147EBD00A21086 /* HomeGoodsHeader.m in Sources */,
 				8BB534691F14A19D00A21086 /* UIRefreshControl+AFNetworking.m in Sources */,
+				8BB534BB1F160F9800A21086 /* ZJJVerificationController.m in Sources */,
 				8BB534661F14A19D00A21086 /* UIButton+AFNetworking.m in Sources */,
 				8BB5345F1F14A19D00A21086 /* AFURLSessionManager.m in Sources */,
-				8BB534261F147E8D00A21086 /* ZJJCollectionViewController.m in Sources */,
 				8BB534831F14D89500A21086 /* ZJJTimeCountDownDateTool.m in Sources */,
 				8BB534221F147E6300A21086 /* JMWaterflowLayout.m in Sources */,
+				8BB534B71F1609FE00A21086 /* ZJJTableViewCell.m in Sources */,
+				8BB534AE1F1609FE00A21086 /* ZJJCollectionViewController.m in Sources */,
+				8BB534AC1F1609FE00A21086 /* TableViewGroupController.m in Sources */,
+				8BB534AD1F1609FE00A21086 /* ViewController.m in Sources */,
 				8BB534621F14A19D00A21086 /* AFAutoPurgingImageCache.m in Sources */,
-				8BB533D81F1313C700A21086 /* ViewController.m in Sources */,
+				8BB534B41F1609FE00A21086 /* ZJJCollectionViewCell.m in Sources */,
 				8BB5345A1F14A19D00A21086 /* AFHTTPSessionManager.m in Sources */,
+				8BB534AF1F1609FE00A21086 /* TimeModel.m in Sources */,
+				8BB534AB1F1609FE00A21086 /* TableViewController.m in Sources */,
 				8BB534681F14A19D00A21086 /* UIProgressView+AFNetworking.m in Sources */,
-				8BB534191F1469F700A21086 /* TableViewGroupController.m in Sources */,
+				8BB534B21F1609FE00A21086 /* TableViewCell.m in Sources */,
+				8BB534B01F1609FE00A21086 /* HomeGoodsHeader.m in Sources */,
 				8BB533D51F1313C700A21086 /* AppDelegate.m in Sources */,
 				8BB534651F14A19D00A21086 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				8BB5345C1F14A19D00A21086 /* AFSecurityPolicy.m in Sources */,
 				8BB5345D1F14A19D00A21086 /* AFURLRequestSerialization.m in Sources */,
 				8BB5345B1F14A19D00A21086 /* AFNetworkReachabilityManager.m in Sources */,
+				8BB534B61F1609FE00A21086 /* ZJJOneTimeCountDownLabel.m in Sources */,
 				8BB5345E1F14A19D00A21086 /* AFURLResponseSerialization.m in Sources */,
 				8BB534671F14A19D00A21086 /* UIImageView+AFNetworking.m in Sources */,
-				8BB5340C1F131F1E00A21086 /* TimeModel.m in Sources */,
 				8BB534231F147E6300A21086 /* UIViewController+JMCollectionView.m in Sources */,
 				8BB534841F14D89500A21086 /* ZJJTimeCountDownLabel.m in Sources */,
+				8BB534AA1F1609FE00A21086 /* BaseTableViewController.m in Sources */,
 				8BB534821F14D89500A21086 /* ZJJTimeCountDown.m in Sources */,
-				8BB534131F131F7400A21086 /* TableViewCell.m in Sources */,
-				8BB5340F1F131F4A00A21086 /* TableViewController.m in Sources */,
 				8BB533D21F1313C700A21086 /* main.m in Sources */,
 				8BB5346A1F14A19D00A21086 /* UIWebView+AFNetworking.m in Sources */,
 				8BB534631F14A19D00A21086 /* AFImageDownloader.m in Sources */,

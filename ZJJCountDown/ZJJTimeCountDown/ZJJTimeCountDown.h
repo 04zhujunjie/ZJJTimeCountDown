@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "ZJJTimeCountDownLabel.h"
 
+@class ZJJTimeCountDown;
 
 typedef NS_ENUM(NSInteger , ZJJCountDownTimeStyle) {
 
@@ -22,49 +23,78 @@ typedef NS_ENUM(NSInteger , ZJJCountDownTimeStyle) {
     
 };
 
-typedef NS_ENUM(NSInteger, ZJJCountDownCellEditingStyle){
-
-    ZJJCountDownCellEditingNone = 0,
-    //只支持UITableView，过时数据做自动删除，需要知道具体删除数据，请实现代理方法
-    ZJJCountDownCellEditingAutomaticallyDeleted
-};
-
 @protocol ZJJTimeCountDownDelegate <NSObject>
 
 @optional
 
-- (void)countDownWithAutomaticallyDeleteModel:(id)model;
+
+/**
+ 过时的数据自动删除回调方法， 针对UITableView 或者 UICollectionView上的倒计时视图
+
+ @param model 数据模型
+ */
+- (void)scrollViewWithAutomaticallyDeleteModel:(id)model;
+
+
+/**
+ 过时的数据回调方法,回调的数据调用addTimeLabel:(ZJJTimeCountDownLabel *)timeLabel time:(NSString *)time方法所添加数据
+
+ @param timeLabel 倒计时视图
+ @param timeCountDown self
+ */
+- (void)outDateTimeLabel:(ZJJTimeCountDownLabel *)timeLabel timeCountDown:(ZJJTimeCountDown *)timeCountDown;
+
+- (void)dateWithSeconds:(NSInteger)seconds timeLabel:(ZJJTimeCountDownLabel *)timeLabel timeCountDown:(ZJJTimeCountDown *)timeCountDown;
 
 @end
 
 @interface ZJJTimeCountDown : NSObject
 
-@property (nonatomic ,strong)NSString *jj_description;
 
 // 与服务器时间的差值 手机时间-服务器时间
 @property (nonatomic ,assign) NSInteger less;
 //时间格式
 @property (nonatomic ,assign) ZJJCountDownTimeStyle timeStyle;
-//编辑格式
-@property (nonatomic ,assign) ZJJCountDownCellEditingStyle editingStyle;
 
 @property (nonatomic ,weak) id <ZJJTimeCountDownDelegate> delegate;
 
 
 /**
- 初始化
+ 添加倒计时，添加后自动启动定时器 ，一般用于页面上可见少量的定时器
+
+ @param timeLabel 时间视图
+ @param time 时间
+ */
+- (void)addTimeLabel:(ZJJTimeCountDownLabel *)timeLabel time:(NSString *)time;
+
+/**
+ 初始化，针对UITableView 或者 UICollectionView上的倒计时视图
 
  @param scrollView 滑动View ，可以是UITableView 或者 UICollectionView
  @param dataList 数据源
- @param timeKey 模型时间属性
  @return 初始化对象
  */
-- (instancetype)initWithScrollView:(UIScrollView *)scrollView dataList:(NSMutableArray *)dataList timeKey:(NSString *)timeKey;
+- (instancetype)initWithScrollView:(UIScrollView *)scrollView dataList:(NSMutableArray *)dataList;
 
+/**
+ 删除数据 针对UITableView 或者 UICollectionView上的倒计时视图
+
+ @param model 数据模型
+ @param indexPath 索引位置
+ */
 - (void)deleteReloadDataWithModel:(id)model indexPath:(NSIndexPath *)indexPath;
 
-// 滑动过快的时候时间不会闪  (tableViewcell数据源方法里实现即可)
-- (NSString *)countDownWithModel:(id)model;
+//
+
+/**
+ 
+  滑动过快的时候时间不会闪 (UITableViewCell 或者UICollectionViewCell 数据源方法里实现即可)
+ 
+ @param model 数据模型
+ @param timeLabel 倒计时视图
+ @return 显示时间
+ */
+- (NSString *)countDownWithModel:(id)model timeLabel:(ZJJTimeCountDownLabel *)timeLabel;
 
 /**
  判断该数据是否已经过时

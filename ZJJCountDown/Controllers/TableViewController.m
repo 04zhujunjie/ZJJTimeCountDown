@@ -7,6 +7,7 @@
 //
 
 #import "TableViewController.h"
+#import "ZJJTableViewCell.h"
 
 @interface TableViewController ()
 
@@ -23,12 +24,18 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"one"];
+    
+    static NSString *cellID = @"cellID";
+    ZJJTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    if (cell == nil) {
+        cell = [[ZJJTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellID];
+    }
     TimeModel *model = self.dataList[indexPath.row];
     //必须设置所显示的行
     cell.timeLabel.indexPath = indexPath;
     //在不设置为过时自动删除情况下 滑动过快的时候时间不会闪
-    cell.timeLabel.text = [self.countDown countDownWithModel:model];
+    cell.timeLabel.text = [self.countDown countDownWithModel:model timeLabel:cell.timeLabel];
+    
     return cell;
 }
 
@@ -38,12 +45,10 @@
 - (ZJJTimeCountDown *)countDown{
 
     ZJJTimeCountDown *countDown = [super countDown];
-    //设置自动删除已经超时数据
-    countDown.editingStyle = ZJJCountDownCellEditingAutomaticallyDeleted;
     return countDown;
 }
 
-- (void)countDownWithAutomaticallyDeleteModel:(id)model{
+- (void)scrollViewWithAutomaticallyDeleteModel:(id)model{
     
     NSLog(@"==model:%@===endTime=%@===",model,[model valueForKey:@"endTime"]);
 }
@@ -71,7 +76,49 @@
                      @"2017-4-5 12:10:06",
                      @"2017-5-5 12:10:06",
                      @"2017-6-5 12:10:06",
-                     @"2020-7-10 18:6:16"];
+                     @"2020-7-10 18:6:16",
+                     @"2017-2-5 12:10:06",
+                     @"2017-3-5 12:10:06",
+                     @"2017-4-5 12:10:06",
+                     @"2017-5-5 12:10:06",
+                     @"2019-6-5 12:10:06",
+                     @"2017-7-10 18:6:16",
+                     @"2017-8-5 18:10:06",
+                     @"2017-9-5 18:10:06",
+                     @"2017-10-5 18:10:06",
+                     @"2017-7-10 18:6:16",
+                     @"2017-8-5 18:10:06",
+                     @"2017-9-5 18:10:06",
+                     @"2017-10-5 18:10:06",
+                     @"2016-7-10 18:6:16",
+                     @"2017-8-5 18:10:06",
+                     @"2016-9-5 18:10:06",
+                     @"2007-10-5 18:10:06",
+                     @"2017-4-5 12:10:06",
+                     @"2017-5-5 12:10:06",
+                     @"2017-6-5 12:10:06",
+                     @"2017-5-5 12:10:06",
+                     @"2017-6-5 12:10:06",
+                     @"2020-7-10 18:6:16",
+                     @"2017-2-5 12:10:06",
+                     @"2017-3-5 12:10:06",
+                     @"2017-4-5 12:10:06",
+                     @"2017-5-5 12:10:06",
+                     @"2019-6-5 12:10:06",
+                     @"2017-7-10 18:6:16",
+                     @"2017-8-5 18:10:06",
+                     @"2017-9-5 18:10:06",
+                     @"2017-10-5 18:10:06",
+                     @"2017-7-10 18:6:16",
+                     @"2017-8-5 18:10:06",
+                     @"2017-9-5 18:10:06",
+                     @"2017-10-5 18:10:06",
+                     @"2016-7-10 18:6:16",
+                     @"2017-8-5 18:10:06",
+                     @"2016-9-5 18:10:06",
+                     @"2007-10-5 18:10:06",
+                     @"2017-4-5 12:10:06",
+                     @"2017-5-5 12:10:06",];
     
 //    NSArray *arr = @[
 //                     @"20170715180616",

@@ -24,7 +24,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    UINib*nib = [UINib nibWithNibName:NSStringFromClass([TableViewCell class]) bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"one"];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -41,15 +42,19 @@
     TimeModel *model = self.dataList[indexPath.section][indexPath.row];
     //必须设置所显示的行
     cell.timeLabel.indexPath = indexPath;
-    NSString *timeText = [self.countDown countDownWithModel:model];
+    NSString *timeText = [self.countDown countDownWithModel:model timeLabel:cell.timeLabel];
     //在self.countDown不设置为过时自动删除情况下, 滑动过快的时候时间不会闪
     cell.timeLabel.text = timeText;
-    if ([cell.timeLabel.text isEqualToString:self.countDown.jj_description]) {
+    cell.twoTimeLabel.indexPath = indexPath;
+     NSString *twoTimeText = [self.countDown countDownWithModel:model timeLabel:cell.twoTimeLabel];
+    cell.twoTimeLabel.text = twoTimeText;
+    if ([cell.timeLabel.text isEqualToString:cell.timeLabel.jj_description]) {
         cell.timeLabel.textColor = [UIColor redColor];
     }else{
     
         cell.timeLabel.textColor = [UIColor blackColor];
     }
+
     return cell;
 }
 
@@ -77,12 +82,13 @@
                      @"1596881529",
                      @"1588888888"];
     
-    for (int j = 0; j < 50; j ++) {
+    for (int j = 0; j < 10; j ++) {
         NSMutableArray *arrM = [NSMutableArray array];
         for (int i = 0; i < arr.count; i ++) {
             
             TimeModel *model = [TimeModel new];
-            model.endTime = arr[i];
+            model.startTime = arr[i];
+            model.endTime = arr[j*i%5];
             [arrM addObject:model];
         }
         
@@ -94,7 +100,6 @@
 - (ZJJTimeCountDown *)countDown{
     
     ZJJTimeCountDown *countDown = [super countDown];
-    countDown.jj_description = @"活动已经结束了！😄😄";
     //时间戳
     countDown.timeStyle = ZJJCountDownTimeStyleTamp;
     return countDown;

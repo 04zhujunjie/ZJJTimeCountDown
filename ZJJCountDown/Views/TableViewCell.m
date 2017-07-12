@@ -18,7 +18,12 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.timeLabel.adjustsFontSizeToFitWidth = YES;
+    self.timeLabel.timeKey = @"startTime";
+    self.twoTimeLabel.timeKey = @"endTime";
+    self.timeLabel.jj_description = @"活动已经开始";
+    self.twoTimeLabel.jj_description = @"活动结束了！😄😄";
+    self.twoTimeLabel.adjustsFontSizeToFitWidth = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
