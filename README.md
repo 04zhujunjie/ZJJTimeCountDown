@@ -50,7 +50,7 @@ typedef NS_ENUM(NSInteger , ZJJCountDownTimeStyle) {
     self.timeLabel.jj_description = @"活动结束了！😄😄";
 ```
 
-3）、直接使用ZJJTimeCountDownLabel类，在ZJJTimeCountDownLabel的父视图初始化时设置 ，这里父视图是xib形式
+3）、直接使用ZJJTimeCountDownLabel类，如果是xib形式，在ZJJTimeCountDownLabel的父视图初始化时设置 
 ```
   - (void)awakeFromNib {
     [super awakeFromNib];
