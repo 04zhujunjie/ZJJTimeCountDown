@@ -35,8 +35,8 @@
     //注意⚠️：如果传入非2017-7-12 20:20:20时间格式，要先设置时间格式，在进行视图添加
 //    self.countDown.timeStyle = ZJJCountDownTimeStyleNormal;
     [self.countDown addTimeLabel:self.oneTimeLabel time:[self dateByAddingSeconds:-10]];
-    [self.countDown addTimeLabel:self.twoTimeLabel time:[self dateByAddingSeconds:25]];
-    [self.countDown addTimeLabel:self.threeTimeLabel time:[self dateByAddingSeconds:45]];
+    [self.countDown addTimeLabel:self.twoTimeLabel time:[self dateByAddingSeconds:15]];
+    [self.countDown addTimeLabel:self.threeTimeLabel time:[self dateByAddingSeconds:30]];
     // Do any additional setup after loading the view, typically from a nib.
 }
 

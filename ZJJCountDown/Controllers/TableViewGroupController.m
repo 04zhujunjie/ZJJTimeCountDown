@@ -76,14 +76,14 @@
 
 - (void)addData{
     
-    NSArray *arr = @[@"1496881149",
+    NSArray *arr = @[
                      @"1591888666",
                      @"1598881266",
                      @"1496682149",
                      @"1596966688",
                      @"1588888888"];
     
-    for (int j = 0; j < 20; j ++) {
+    for (int j = 0; j < 30; j ++) {
         NSMutableArray *arrM = [NSMutableArray array];
         for (int i = 1; i < arr.count; i ++) {
             
