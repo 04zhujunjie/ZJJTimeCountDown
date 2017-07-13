@@ -90,9 +90,12 @@ _countDown = [[ZJJTimeCountDown alloc] initWithScrollView:self.tableView dataLis
  1）创建JJTimeCountDown对象并添加label
  ```
     _countDown = [[ZJJTimeCountDown alloc] init];
-    //时间格式
-    _countDown.timeStyle = ZJJCountDownTimeStyleTamp;
-    [_countDown addTimeLabel:self.timeLabel time:@"1591881249"];
+    //时间格式为时间戳
+    _countDown.timeStyle = ZJJCountDownTimeStyleTamp;
+    //设置代理
+    _countDown.delegate = self;
+    //添加数据， time：时间戳
+    [_countDown addTimeLabel:self.timeLabel time:@"1591881249"];
  ```
 
 ### 三、ZJJTimeCountDown代理方法
