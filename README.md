@@ -30,13 +30,14 @@ typedef NS_ENUM(NSInteger , ZJJCountDownTimeStyle) {
 
 ## 如何使用   
 
-### 一、使用ZJJTimeCountDownLabel类或继承ZJJTimeCountDownLabel类来创建倒计时label ，        并在初始化视图时设置label属性,label的timeKey属性一定要设置，提倡以下三种设置方式
+### 一、使用ZJJTimeCountDownLabel类或继承ZJJTimeCountDownLabel类来创建倒计时label ，        并在初始化视图时设置label属性,label的timeKey属性一定要设置，推荐以下三种设置方式
 
-1)、在继承ZJJTimeCountDownLabel类的.m文件中重写以下方法        
+1)、如果是使用继承ZJJTimeCountDownLabel类，在该类的.m文件中重写以下方法        
 
 ```
 - (void)setupProperty{
-    self.timeKey = @"endTime";
+    //对应模型中要显示的倒计时的属性字符串（必须要设置）
+    self.timeKey = @"endTime";
     //设置过时数据自动删除
     self.isAutomaticallyDeleted = YES;
 }
@@ -46,7 +47,9 @@ typedef NS_ENUM(NSInteger , ZJJCountDownTimeStyle) {
 
 ```
     self.timeLabel = [[ZJJTimeCountDownLabel alloc] init];
+    //对应模型中要显示的倒计时的属性字符串（必须要设置）
     self.timeLabel.timeKey = @"endTime";
+    //过时后，显示的文字
     self.timeLabel.jj_description = @"活动结束了！😄😄";
 ```
 
