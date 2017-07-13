@@ -13,7 +13,7 @@
 - (void)setupProperty{
 
     self.timeKey = @"endTime";
-    self.jj_description = @"活动已经结束了！😄😄😄";
+    //设置过时数据自动删除
     self.isAutomaticallyDeleted = YES;
 }
 

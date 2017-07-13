@@ -10,6 +10,7 @@
 #import "ZJJTimeCountDownLabel.h"
 #import "ZJJTimeCountDown.h"
 
+static NSString *const kBtnTitle = @"点击获取验证码";
 
 @interface ZJJVerificationController ()<ZJJTimeCountDownDelegate>
 
@@ -23,6 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.verificationBtn setTitle:kBtnTitle forState:UIControlStateNormal];
 }
 
 
@@ -72,10 +74,11 @@
         
     }else{
     
-        [self.verificationBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+        [self.verificationBtn setTitle:kBtnTitle forState:UIControlStateNormal];
         self.verificationBtn.userInteractionEnabled = YES;
     }
 }
+
 
 
 

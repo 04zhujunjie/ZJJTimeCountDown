@@ -77,18 +77,19 @@
 - (void)addData{
     
     NSArray *arr = @[@"1496881149",
-                     @"1591881249",
-                     @"1496881149",
-                     @"1596881529",
+                     @"1591888666",
+                     @"1598881266",
+                     @"1496682149",
+                     @"1596966688",
                      @"1588888888"];
     
-    for (int j = 0; j < 10; j ++) {
+    for (int j = 0; j < 20; j ++) {
         NSMutableArray *arrM = [NSMutableArray array];
-        for (int i = 0; i < arr.count; i ++) {
+        for (int i = 1; i < arr.count; i ++) {
             
             TimeModel *model = [TimeModel new];
             model.startTime = arr[i];
-            model.endTime = arr[j*i%5];
+            model.endTime = arr[j%(i+1)];
             [arrM addObject:model];
         }
         
