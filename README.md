@@ -1,11 +1,11 @@
 # ZJJTimeCountDown    
 ![image](https://github.com/04zhujunjie/ZJJTimeCountDown/blob/master/Screenshot/ZJJCountDown.gif)
 
-## 使用注意事项：
-1）、显示倒计时的label要使用ZJJTimeCountDownLabel类或者继承ZJJTimeCountDownLabel类
-2）、要在初始化视图时设置倒计时label的属性
+## 使用注意事项：      
+1）、显示倒计时的label要使用ZJJTimeCountDownLabel类或者继承ZJJTimeCountDownLabel类       
+2）、要在初始化视图时设置倒计时label的属性        
 3）、在动态的UITableViewCell或UICollectionViewCell上使用倒计时label，要在UITableView或UICollectionView显示数据的代理中设置label的IndexPath属性
-和调用ZJJTimeCountDown类中的以下方法，滑动过快出现闪情况
+和调用ZJJTimeCountDown类中的以下方法，滑动过快出现闪情况        
 ```
 - (NSString *)countDownWithModel:(id)model timeLabel:(ZJJTimeCountDownLabel *)timeLabel;
 
@@ -30,7 +30,7 @@ typedef NS_ENUM(NSInteger , ZJJCountDownTimeStyle) {
 
 ### 一、使用ZJJTimeCountDownLabel类或继承ZJJTimeCountDownLabel类来创建倒计时label ，        并在初始化视图时设置label属性,label的timeKey属性一定要设置，提倡以下三种设置方式
 
-1)、在继承ZJJTimeCountDownLabel类的.m文件中重写以下方法
+1)、在继承ZJJTimeCountDownLabel类的.m文件中重写以下方法        
 
 ```
 - (void)setupProperty{
@@ -40,7 +40,7 @@ typedef NS_ENUM(NSInteger , ZJJCountDownTimeStyle) {
 }
 ```
 
-2）、直接使用ZJJTimeCountDownLabel类，如果非xib形式，初始化时进行设置
+2）、直接使用ZJJTimeCountDownLabel类，如果非xib形式，初始化时进行设置     
 
 ```
     self.timeLabel = [[ZJJTimeCountDownLabel alloc] init];
