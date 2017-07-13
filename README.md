@@ -106,7 +106,7 @@ _countDown = [[ZJJTimeCountDown alloc] initWithScrollView:self.tableView dataLis
 ### 三、ZJJTimeCountDown代理方法
 ```
 /**
- 过时的数据自动删除回调方法， 针对UITableView 或者 UICollectionView上的倒计时视图
+ 过时的数据自动删除回调方法， 针对UITableView上的倒计时视图
 
  @param model 数据模型
  */
