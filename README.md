@@ -1,4 +1,6 @@
-# 效果图        
+# ZJJTimeCountDown    
+
+## 效果图
 ![image](https://github.com/04zhujunjie/ZJJTimeCountDown/blob/master/Screenshot/ZJJCountDown.gif)
 
 ## 使用注意事项：      
