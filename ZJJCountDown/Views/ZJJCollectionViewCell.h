@@ -11,5 +11,6 @@
 @interface ZJJCollectionViewCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet ZJJTimeCountDownLabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *watchImageView;
 
 @end

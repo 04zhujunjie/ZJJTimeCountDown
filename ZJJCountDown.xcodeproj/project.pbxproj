@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B967E1D1F18687C008C634D /* ZJJTimeCountDownCellManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B967E1C1F18687C008C634D /* ZJJTimeCountDownCellManager.m */; };
+		8B967E201F18712F008C634D /* ZJJTimeCountDownLabelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B967E1F1F18712F008C634D /* ZJJTimeCountDownLabelManager.m */; };
+		8B967E231F18B727008C634D /* UIImage+ZJJTimeCountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B967E221F18B727008C634D /* UIImage+ZJJTimeCountDown.m */; };
+		8B967E271F19E269008C634D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B967E251F19E269008C634D /* MainViewController.m */; };
+		8B967E281F19E269008C634D /* HomeTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B967E261F19E269008C634D /* HomeTableViewController.xib */; };
+		8B967E2C1F19E721008C634D /* ZJJRegularlyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B967E2A1F19E721008C634D /* ZJJRegularlyViewController.m */; };
+		8B967E2D1F19E721008C634D /* ZJJRegularlyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B967E2B1F19E721008C634D /* ZJJRegularlyViewController.xib */; };
+		8B967E301F1A12D0008C634D /* ZJJTimeCountDownLabelTextStlyeTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B967E2F1F1A12D0008C634D /* ZJJTimeCountDownLabelTextStlyeTool.m */; };
+		8B967E331F1CA79B008C634D /* WatchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B967E321F1CA79B008C634D /* WatchModel.m */; };
 		8BB533D21F1313C700A21086 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB533D11F1313C700A21086 /* main.m */; };
 		8BB533D51F1313C700A21086 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB533D41F1313C700A21086 /* AppDelegate.m */; };
 		8BB533DB1F1313C700A21086 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BB533D91F1313C700A21086 /* Main.storyboard */; };
@@ -70,6 +79,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8B967E1B1F18687C008C634D /* ZJJTimeCountDownCellManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJJTimeCountDownCellManager.h; sourceTree = "<group>"; };
+		8B967E1C1F18687C008C634D /* ZJJTimeCountDownCellManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJJTimeCountDownCellManager.m; sourceTree = "<group>"; };
+		8B967E1E1F18712F008C634D /* ZJJTimeCountDownLabelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJJTimeCountDownLabelManager.h; sourceTree = "<group>"; };
+		8B967E1F1F18712F008C634D /* ZJJTimeCountDownLabelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJJTimeCountDownLabelManager.m; sourceTree = "<group>"; };
+		8B967E211F18B727008C634D /* UIImage+ZJJTimeCountDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ZJJTimeCountDown.h"; sourceTree = "<group>"; };
+		8B967E221F18B727008C634D /* UIImage+ZJJTimeCountDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ZJJTimeCountDown.m"; sourceTree = "<group>"; };
+		8B967E241F19E269008C634D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		8B967E251F19E269008C634D /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		8B967E261F19E269008C634D /* HomeTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeTableViewController.xib; sourceTree = "<group>"; };
+		8B967E291F19E721008C634D /* ZJJRegularlyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJJRegularlyViewController.h; sourceTree = "<group>"; };
+		8B967E2A1F19E721008C634D /* ZJJRegularlyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJJRegularlyViewController.m; sourceTree = "<group>"; };
+		8B967E2B1F19E721008C634D /* ZJJRegularlyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJJRegularlyViewController.xib; sourceTree = "<group>"; };
+		8B967E2E1F1A12D0008C634D /* ZJJTimeCountDownLabelTextStlyeTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJJTimeCountDownLabelTextStlyeTool.h; sourceTree = "<group>"; };
+		8B967E2F1F1A12D0008C634D /* ZJJTimeCountDownLabelTextStlyeTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJJTimeCountDownLabelTextStlyeTool.m; sourceTree = "<group>"; };
+		8B967E311F1CA79B008C634D /* WatchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchModel.h; sourceTree = "<group>"; };
+		8B967E321F1CA79B008C634D /* WatchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchModel.m; sourceTree = "<group>"; };
 		8BB533CD1F1313C700A21086 /* ZJJCountDown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZJJCountDown.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BB533D11F1313C700A21086 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8BB533D31F1313C700A21086 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -320,10 +345,18 @@
 			children = (
 				8BB5347C1F14D89500A21086 /* ZJJTimeCountDown.h */,
 				8BB5347D1F14D89500A21086 /* ZJJTimeCountDown.m */,
+				8B967E1B1F18687C008C634D /* ZJJTimeCountDownCellManager.h */,
+				8B967E1C1F18687C008C634D /* ZJJTimeCountDownCellManager.m */,
+				8B967E1E1F18712F008C634D /* ZJJTimeCountDownLabelManager.h */,
+				8B967E1F1F18712F008C634D /* ZJJTimeCountDownLabelManager.m */,
 				8BB5347E1F14D89500A21086 /* ZJJTimeCountDownDateTool.h */,
 				8BB5347F1F14D89500A21086 /* ZJJTimeCountDownDateTool.m */,
 				8BB534801F14D89500A21086 /* ZJJTimeCountDownLabel.h */,
 				8BB534811F14D89500A21086 /* ZJJTimeCountDownLabel.m */,
+				8B967E2E1F1A12D0008C634D /* ZJJTimeCountDownLabelTextStlyeTool.h */,
+				8B967E2F1F1A12D0008C634D /* ZJJTimeCountDownLabelTextStlyeTool.m */,
+				8B967E211F18B727008C634D /* UIImage+ZJJTimeCountDown.h */,
+				8B967E221F18B727008C634D /* UIImage+ZJJTimeCountDown.m */,
 			);
 			path = ZJJTimeCountDown;
 			sourceTree = "<group>";
@@ -337,6 +370,12 @@
 				8BB534901F1609FE00A21086 /* BaseTableViewController.m */,
 				8BB534911F1609FE00A21086 /* TableViewController.h */,
 				8BB534921F1609FE00A21086 /* TableViewController.m */,
+				8B967E241F19E269008C634D /* MainViewController.h */,
+				8B967E251F19E269008C634D /* MainViewController.m */,
+				8B967E291F19E721008C634D /* ZJJRegularlyViewController.h */,
+				8B967E2A1F19E721008C634D /* ZJJRegularlyViewController.m */,
+				8B967E2B1F19E721008C634D /* ZJJRegularlyViewController.xib */,
+				8B967E261F19E269008C634D /* HomeTableViewController.xib */,
 				8BB534931F1609FE00A21086 /* TableViewGroupController.h */,
 				8BB534941F1609FE00A21086 /* TableViewGroupController.m */,
 				8BB534971F1609FE00A21086 /* ZJJCollectionViewController.h */,
@@ -353,6 +392,8 @@
 			children = (
 				8BB5349A1F1609FE00A21086 /* TimeModel.h */,
 				8BB5349B1F1609FE00A21086 /* TimeModel.m */,
+				8B967E311F1CA79B008C634D /* WatchModel.h */,
+				8B967E321F1CA79B008C634D /* WatchModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -490,7 +531,9 @@
 				8BB534B51F1609FE00A21086 /* ZJJCollectionViewCell.xib in Resources */,
 				8BB534B31F1609FE00A21086 /* TableViewCell.xib in Resources */,
 				8BB533DD1F1313C700A21086 /* Assets.xcassets in Resources */,
+				8B967E281F19E269008C634D /* HomeTableViewController.xib in Resources */,
 				8BB534BC1F160F9800A21086 /* ZJJVerificationController.xib in Resources */,
+				8B967E2D1F19E721008C634D /* ZJJRegularlyViewController.xib in Resources */,
 				8BB534B11F1609FE00A21086 /* HomeGoodsHeader.xib in Resources */,
 				8BB533DB1F1313C700A21086 /* Main.storyboard in Resources */,
 			);
@@ -522,6 +565,7 @@
 				8BB534661F14A19D00A21086 /* UIButton+AFNetworking.m in Sources */,
 				8BB5345F1F14A19D00A21086 /* AFURLSessionManager.m in Sources */,
 				8BB534831F14D89500A21086 /* ZJJTimeCountDownDateTool.m in Sources */,
+				8B967E2C1F19E721008C634D /* ZJJRegularlyViewController.m in Sources */,
 				8BB534221F147E6300A21086 /* JMWaterflowLayout.m in Sources */,
 				8BB534B71F1609FE00A21086 /* ZJJTableViewCell.m in Sources */,
 				8BB534AE1F1609FE00A21086 /* ZJJCollectionViewController.m in Sources */,
@@ -531,23 +575,29 @@
 				8BB534B41F1609FE00A21086 /* ZJJCollectionViewCell.m in Sources */,
 				8BB5345A1F14A19D00A21086 /* AFHTTPSessionManager.m in Sources */,
 				8BB534AF1F1609FE00A21086 /* TimeModel.m in Sources */,
+				8B967E331F1CA79B008C634D /* WatchModel.m in Sources */,
 				8BB534AB1F1609FE00A21086 /* TableViewController.m in Sources */,
 				8BB534681F14A19D00A21086 /* UIProgressView+AFNetworking.m in Sources */,
 				8BB534B21F1609FE00A21086 /* TableViewCell.m in Sources */,
 				8BB534B01F1609FE00A21086 /* HomeGoodsHeader.m in Sources */,
 				8BB533D51F1313C700A21086 /* AppDelegate.m in Sources */,
+				8B967E1D1F18687C008C634D /* ZJJTimeCountDownCellManager.m in Sources */,
 				8BB534651F14A19D00A21086 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				8BB5345C1F14A19D00A21086 /* AFSecurityPolicy.m in Sources */,
+				8B967E201F18712F008C634D /* ZJJTimeCountDownLabelManager.m in Sources */,
 				8BB5345D1F14A19D00A21086 /* AFURLRequestSerialization.m in Sources */,
 				8BB5345B1F14A19D00A21086 /* AFNetworkReachabilityManager.m in Sources */,
+				8B967E231F18B727008C634D /* UIImage+ZJJTimeCountDown.m in Sources */,
 				8BB534B61F1609FE00A21086 /* ZJJOneTimeCountDownLabel.m in Sources */,
 				8BB5345E1F14A19D00A21086 /* AFURLResponseSerialization.m in Sources */,
 				8BB534671F14A19D00A21086 /* UIImageView+AFNetworking.m in Sources */,
 				8BB534231F147E6300A21086 /* UIViewController+JMCollectionView.m in Sources */,
 				8BB534841F14D89500A21086 /* ZJJTimeCountDownLabel.m in Sources */,
 				8BB534AA1F1609FE00A21086 /* BaseTableViewController.m in Sources */,
+				8B967E301F1A12D0008C634D /* ZJJTimeCountDownLabelTextStlyeTool.m in Sources */,
 				8BB534821F14D89500A21086 /* ZJJTimeCountDown.m in Sources */,
 				8BB533D21F1313C700A21086 /* main.m in Sources */,
+				8B967E271F19E269008C634D /* MainViewController.m in Sources */,
 				8BB5346A1F14A19D00A21086 /* UIWebView+AFNetworking.m in Sources */,
 				8BB534631F14A19D00A21086 /* AFImageDownloader.m in Sources */,
 				8BB534641F14A19D00A21086 /* AFNetworkActivityIndicatorManager.m in Sources */,

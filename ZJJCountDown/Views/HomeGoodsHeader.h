@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface HomeGoodsHeader : UICollectionReusableView
+@property (weak, nonatomic) IBOutlet UILabel *label;
 
 @end

@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "ZJJTimeCountDownLabel.h"
 
+
 @class ZJJTimeCountDown;
 
 typedef NS_ENUM(NSInteger , ZJJCountDownTimeStyle) {
@@ -44,7 +45,22 @@ typedef NS_ENUM(NSInteger , ZJJCountDownTimeStyle) {
  */
 - (void)outDateTimeLabel:(ZJJTimeCountDownLabel *)timeLabel timeCountDown:(ZJJTimeCountDown *)timeCountDown;
 
-- (void)dateWithSeconds:(NSInteger)seconds timeLabel:(ZJJTimeCountDownLabel *)timeLabel timeCountDown:(ZJJTimeCountDown *)timeCountDown;
+/**
+ 每次执行倒计时，回调方法
+ @param timeLabel 倒计时Label
+ @param timeCountDown self
+ */
+- (void)dateWithTimeLabel:(ZJJTimeCountDownLabel *)timeLabel timeCountDown:(ZJJTimeCountDown *)timeCountDown;
+
+
+/**
+ 自定义时间格式方法 ，需要设置timeLabel的textStyle为ZJJTextStlyeCustom，自定义时间样式才会生效
+ 如果返回值为nil或者@“”，自定义时间失败,显示时间格式为默认格式：55天05时30分10秒
+ @param timeLabel 时间label
+ @param timeCountDown self
+ @return 自定义时间格式字符
+ */
+- (NSAttributedString *)customTextWithTimeLabel:(ZJJTimeCountDownLabel *)timeLabel timeCountDown:(ZJJTimeCountDown *)timeCountDown;
 
 @end
 
@@ -94,7 +110,7 @@ typedef NS_ENUM(NSInteger , ZJJCountDownTimeStyle) {
  @param timeLabel 倒计时视图
  @return 显示时间
  */
-- (NSString *)countDownWithModel:(id)model timeLabel:(ZJJTimeCountDownLabel *)timeLabel;
+- (NSAttributedString *)countDownWithModel:(id)model timeLabel:(ZJJTimeCountDownLabel *)timeLabel;
 
 /**
  判断该数据是否已经过时

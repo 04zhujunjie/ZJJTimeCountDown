@@ -7,11 +7,27 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ZJJTimeCountDown.h"
 
 @interface ZJJTimeCountDownDateTool : NSObject
 
-+ (long long)getTimeTampWithNormal:(NSString *)normalTimeStr;
 
-+ (long long)getTimeTampWithPureNumber:(NSString *)pureNumberTimeStr;
+/**
+ 转成时间戳
+
+ @param str 时间字符串
+ @param timeStyle 时间格式
+ @return 时间戳
+ */
++ (long long)getTimeTampWithStr:(NSString *)str timeStyle:(ZJJCountDownTimeStyle)timeStyle;
+
+/**
+ 在当前的时间上追加秒数
+
+ @param seconds 追加秒数
+ @param timeStyle 时间格式
+ @return 时间字符串
+ */
++ (NSString *)dateByAddingSeconds:(NSInteger)seconds timeStyle:(ZJJCountDownTimeStyle)timeStyle;
 
 @end

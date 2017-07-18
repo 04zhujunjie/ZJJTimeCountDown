@@ -35,9 +35,10 @@
     //注意⚠️：如果传入非2017-7-12 20:20:20时间格式，要先设置时间格式，在进行视图添加
 //    self.countDown.timeStyle = ZJJCountDownTimeStyleNormal;
     [self.countDown addTimeLabel:self.oneTimeLabel time:[self dateByAddingSeconds:-10]];
-    [self.countDown addTimeLabel:self.twoTimeLabel time:[self dateByAddingSeconds:15]];
-    [self.countDown addTimeLabel:self.threeTimeLabel time:[self dateByAddingSeconds:30]];
+    [self.countDown addTimeLabel:self.twoTimeLabel time:[self dateByAddingSeconds:102]];
+    [self.countDown addTimeLabel:self.threeTimeLabel time:[self dateByAddingSeconds:300]];
     // Do any additional setup after loading the view, typically from a nib.
+    
 }
 
 
@@ -95,6 +96,15 @@
          self.threeTimeLabel.textColor = [UIColor greenColor];
      }
    
+}
+
+- (BOOL)isCustomizeText{
+    return YES;
+}
+
+- (NSString *)dateWithDay:(NSInteger)day hour:(NSInteger)hour minute:(NSInteger)minute seconds:(NSInteger)seconds timeLabel:(ZJJTimeCountDownLabel *)timeLabel timeCountDown:(ZJJTimeCountDown *)timeCountDown{
+    NSString *string = [NSString stringWithFormat:@"%.2ld:%.2ld:%.2ld:%.2ld",day,hour,minute,seconds];
+    return string;
 }
 
 

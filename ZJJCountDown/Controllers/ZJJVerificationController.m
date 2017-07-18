@@ -9,10 +9,14 @@
 #import "ZJJVerificationController.h"
 #import "ZJJTimeCountDownLabel.h"
 #import "ZJJTimeCountDown.h"
+#import "ZJJTimeCountDownDateTool.h"
 
 static NSString *const kBtnTitle = @"点击获取验证码";
 
-@interface ZJJVerificationController ()<ZJJTimeCountDownDelegate>
+@interface ZJJVerificationController ()<ZJJTimeCountDownDelegate>{
+
+    ZJJTimeCountDown *_countDown;
+}
 
 
 
@@ -44,42 +48,33 @@ static NSString *const kBtnTitle = @"点击获取验证码";
 
 - (void)addTime{
     
-    ZJJTimeCountDown * countDown = [ZJJTimeCountDown new];
-    countDown.delegate = self;
-    [countDown addTimeLabel:[ZJJTimeCountDownLabel new] time:[self dateByAddingSeconds:6]];
+    if (!_countDown) {
+        _countDown = [ZJJTimeCountDown new];
+        _countDown.delegate = self;
+    }
+    ZJJTimeCountDownLabel *timeLabel = [ZJJTimeCountDownLabel new];
+    [_countDown addTimeLabel:timeLabel time:[ZJJTimeCountDownDateTool dateByAddingSeconds:3 timeStyle:ZJJCountDownTimeStyleNormal]];
 }
 
-/**
- 在当前的时间上追加秒数
- 
- @param seconds 追加秒数
- @return 时间
- */
-- (NSString *)dateByAddingSeconds: (NSInteger)seconds{
-    
-    NSTimeInterval aTimeInterval = [NSDate timeIntervalSinceReferenceDate] + seconds;
-    NSDate *newDate = [NSDate dateWithTimeIntervalSinceReferenceDate:aTimeInterval];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
-    NSString *timeStr = [formatter stringFromDate:newDate];
-    return timeStr;
-}
 
-- (void)dateWithSeconds:(NSInteger)seconds timeLabel:(ZJJTimeCountDownLabel *)timeLabel timeCountDown:(ZJJTimeCountDown *)timeCountDown{
+- (void)dateWithTimeLabel:(ZJJTimeCountDownLabel *)timeLabel timeCountDown:(ZJJTimeCountDown *)timeCountDown{
 
-    if (seconds) {
-
-        [self.verificationBtn setTitle:[NSString stringWithFormat:@"(%.2ld)后可重新获取",seconds] forState:UIControlStateNormal];
-        [self.verificationBtn setTitle:[NSString stringWithFormat:@"(%.2ld)后可重新获取",seconds] forState:UIControlStateHighlighted];
+    if (timeLabel.totalSeconds) {
+        
+        [self.verificationBtn setTitle:[NSString stringWithFormat:@"(%.2ld)后可重新获取",timeLabel.totalSeconds] forState:UIControlStateNormal];
+        [self.verificationBtn setTitle:[NSString stringWithFormat:@"(%.2ld)后可重新获取",timeLabel.totalSeconds] forState:UIControlStateHighlighted];
         
     }else{
-    
+        
         [self.verificationBtn setTitle:kBtnTitle forState:UIControlStateNormal];
         self.verificationBtn.userInteractionEnabled = YES;
     }
 }
 
 
+- (void)dealloc{
+    [_countDown destoryTimer];
+}
 
 
 - (void)didReceiveMemoryWarning {

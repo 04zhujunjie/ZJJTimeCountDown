@@ -13,5 +13,6 @@
 
 @property (weak, nonatomic) IBOutlet ZJJTimeCountDownLabel *timeLabel;
 @property (weak, nonatomic) IBOutlet ZJJTimeCountDownLabel *twoTimeLabel;
+@property (weak, nonatomic) IBOutlet ZJJTimeCountDownLabel *threeTImeLabel;
 
 @end

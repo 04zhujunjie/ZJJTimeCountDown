@@ -13,15 +13,17 @@
 #import "TimeModel.h"
 #import "ZJJTimeCountDownLabel.h"
 #import "ZJJCollectionViewCell.h"
-
+#import "WatchModel.h"
+#import "ZJJTimeCountDownDateTool.h"
 #define KHeaderGoodsIdentifier @"HomeGoodsHeader"
 #define KFooterGoodsIdentifier @"FooterGoodsIdentifier"
+
 
 static NSString * const kCollectionViewID = @"collectionView";
 
 @interface ZJJCollectionViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,JMWaterflowLayoutDelegate,ZJJTimeCountDownDelegate>{
 
-    ZJJTimeCountDown * countDown;
+    ZJJTimeCountDown * _countDown;
 }
 
 @property (nonatomic ,strong) UICollectionView *collectionView;
@@ -34,9 +36,8 @@ static NSString * const kCollectionViewID = @"collectionView";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    countDown = [[ZJJTimeCountDown alloc] initWithScrollView:self.collectionView dataList:self.dataList];
-    //    countDown.jj_description = @"hhhhhh";
-    countDown.delegate = self;
+    _countDown = [[ZJJTimeCountDown alloc] initWithScrollView:self.collectionView dataList:self.dataList];
+    _countDown.delegate = self;
     // Do any additional setup after loading the view.
 }
 
@@ -52,11 +53,10 @@ static NSString * const kCollectionViewID = @"collectionView";
 {
 
     ZJJCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([ZJJCollectionViewCell class]) forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor orangeColor];
-    TimeModel *model = self.dataList[indexPath.row];
-    cell.timeLabel.adjustsFontSizeToFitWidth = YES;
+    WatchModel *model = self.dataList[indexPath.row];
     cell.timeLabel.indexPath = indexPath;
-    cell.timeLabel.text = [countDown countDownWithModel:model timeLabel:cell.timeLabel];
+    cell.timeLabel.attributedText = [_countDown countDownWithModel:model timeLabel:cell.timeLabel];
+    cell.watchImageView.image = [UIImage imageNamed:model.imageName];
    
     
     return cell;
@@ -68,12 +68,11 @@ static NSString * const kCollectionViewID = @"collectionView";
     if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
       
         HomeGoodsHeader *header  = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:KHeaderGoodsIdentifier forIndexPath:indexPath];
-        header.backgroundColor = [UIColor orangeColor];
             return header;
     }else{
     
         HomeGoodsHeader *footer  = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:KFooterGoodsIdentifier forIndexPath:indexPath];
-         footer.backgroundColor = [UIColor greenColor];
+         footer.label.text = @"加载完毕";
         return footer;
     }
     return nil;
@@ -82,23 +81,41 @@ static NSString * const kCollectionViewID = @"collectionView";
 
 
 
+/**
+设置表头高度
+ */
 - (CGFloat)heightForHeaderViewInWaterflowLayout:(JMWaterflowLayout *)layout{
 
     return 30;
 }
 
 
+/**
+ 设置表尾高度
+ */
 - (CGFloat)heightForFooterViewInWaterflowLayout:(JMWaterflowLayout *)layout{
 
     return 30;
 }
 
+
 #pragma mark - <XMGWaterflowLayoutDelegate>
 - (CGFloat)waterflowLayout:(JMWaterflowLayout *)waterflowLayout heightForItemAtIndex:(NSUInteger)index itemWidth:(CGFloat)itemWidth{
 
-    return 50+arc4random()%150;
+    WatchModel *model = self.dataList[index];
+    UIImage *image = [UIImage imageNamed:model.imageName];
+    
+    return itemWidth*image.size.height/image.size.width+34;
 }
 
+/**
+ 返回列数
+
+ */
+- (NSInteger)columnCountInWaterflowLayout:(JMWaterflowLayout *)waterflowLayout{
+
+    return 2;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -110,14 +127,11 @@ static NSString * const kCollectionViewID = @"collectionView";
     if (!_collectionView) {
         
          JMWaterflowLayout *layout = [[JMWaterflowLayout alloc] init];
-//        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.delegate = self;
         _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
-        _collectionView.backgroundColor = [UIColor whiteColor];
+        _collectionView.backgroundColor = [UIColor grayColor];
         
         [_collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([ZJJCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([ZJJCollectionViewCell class])];
-        // 注册
-//        [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:kCollectionViewID];
         [_collectionView registerNib:[UINib nibWithNibName:KHeaderGoodsIdentifier bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:KHeaderGoodsIdentifier];
         [_collectionView registerNib:[UINib nibWithNibName:KHeaderGoodsIdentifier bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:KFooterGoodsIdentifier];
         _collectionView.delegate = self;
@@ -130,7 +144,7 @@ static NSString * const kCollectionViewID = @"collectionView";
 
 - (void)dealloc {
     /// 2.销毁
-    [countDown destoryTimer];
+    [_countDown destoryTimer];
 }
 
 - (NSMutableArray *)dataList{
@@ -149,43 +163,50 @@ static NSString * const kCollectionViewID = @"collectionView";
     //    NSArray *arr = @[@"1496881149",@"1496881149",@"1496881149",@"1496881149",@"1496881149",@"1496881149",@"1591881249", @"1496881149",@"1596889949",@"1596881349",@"1596881449",@"1596881529",
     //                     @"1496881629",@"1486881729",@"1586991029",@"1586994829",@"1586990929",@"1581699702"
     //                     ];
-    //
-        NSArray *arr = @[@"2017-2-5 12:10:06",
-                          @"2017-3-5 12:10:06",
-                          @"2018-4-5 12:10:06",
-                          @"2017-5-5 12:10:06",
-                          @"2030-6-5 12:10:06",
-                          @"2017-7-10 18:6:16",
-                          @"2027-8-5 18:10:06",
-                          @"2017-9-5 18:10:06",
-                         @"2017-10-5 18:10:06",
-                         @"2017-7-10 18:6:16",
-                         @"2017-8-5 18:10:06",
-                         @"2017-9-5 18:10:06",
-                         @"2017-10-5 18:10:06",
-                         @"2017-7-10 18:6:16",
-                         @"2017-8-5 18:10:06",
-                         @"2017-9-5 18:10:06",
-                         @"2017-10-5 18:10:06",
-                         @"2017-4-5 12:10:06",
-                         @"2027-5-5 12:10:06",
-                         @"2017-6-5 12:10:06",
-                         @"2017-7-10 18:6:16",
-                         @"2017-7-10 18:6:16",
-                         @"2017-8-5 18:10:06",
-                         @"2017-9-5 18:10:06",
-                         @"2017-10-5 18:10:06",
-                         @"2017-4-5 12:10:06",
-                         @"2027-5-5 12:10:06",
-                         @"2017-6-5 12:10:06",
-                         @"2017-7-10 18:6:16"];
+//    //
+//        NSArray *arr = @[@"2017-2-5 12:10:06",
+//                          @"2017-3-5 12:10:06",
+//                          @"2018-4-5 12:10:06",
+//                          @"2017-5-5 12:10:06",
+//                          @"2030-6-5 12:10:06",
+//                          @"2017-7-10 18:6:16",
+//                          @"2027-8-5 18:10:06",
+//                          @"2017-9-5 18:10:06",
+//                         @"2017-10-5 18:10:06",
+//                         @"2017-7-10 18:6:16",
+//                         @"2017-8-5 18:10:06",
+//                         @"2017-9-5 18:10:06",
+//                         @"2017-10-5 18:10:06",
+//                         @"2017-7-10 18:6:16",
+//                         @"2017-8-5 18:10:06",
+//                         @"2017-9-5 18:10:06",
+//                         @"2017-10-5 18:10:06",
+//                         @"2017-4-5 12:10:06",
+//                         @"2027-5-5 12:10:06",
+//                         @"2017-6-5 12:10:06",
+//                         @"2017-7-10 18:6:16",
+//                         @"2017-7-10 18:6:16",
+//                         @"2017-8-5 18:10:06",
+//                         @"2017-9-5 18:10:06",
+//                         @"2017-10-5 18:10:06",
+//                         @"2017-4-5 12:10:06",
+//                         @"2027-5-5 12:10:06",
+//                         @"2017-6-5 12:10:06",
+//                         @"2017-7-10 18:6:16"];
+//    
+//    
+//    for (int i = 0; i < arr.count; i ++) {
+//        
+//        TimeModel *model = [TimeModel new];
+//        model.endTime = arr[i];
+//        [_dataList addObject:model];
+//    }
     
-    
-    for (int i = 0; i < arr.count; i ++) {
-        
-        TimeModel *model = [TimeModel new];
-        model.endTime = arr[i];
-        [_dataList addObject:model];
+    for (int i = 0; i < 100; i ++) {
+        WatchModel *model = [WatchModel new];
+        model.imageName = [NSString stringWithFormat:@"watch%ld",arc4random()%5];
+        model.startTime = [ZJJTimeCountDownDateTool dateByAddingSeconds:arc4random()%10000+60 timeStyle:_countDown.timeStyle];
+        [self.dataList addObject:model];
     }
     
 }

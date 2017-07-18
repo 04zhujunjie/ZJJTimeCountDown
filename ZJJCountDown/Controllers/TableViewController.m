@@ -34,13 +34,15 @@
     //必须设置所显示的行
     cell.timeLabel.indexPath = indexPath;
     //在不设置为过时自动删除情况下 滑动过快的时候时间不会闪
-    cell.timeLabel.text = [self.countDown countDownWithModel:model timeLabel:cell.timeLabel];
+    cell.timeLabel.attributedText = [self.countDown countDownWithModel:model timeLabel:cell.timeLabel];
     
     return cell;
 }
 
-
-
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    
+    NSLog(@"=======%s=====",__func__);
+}
 
 - (ZJJTimeCountDown *)countDown{
 
@@ -53,37 +55,71 @@
     NSLog(@"==model:%@===endTime=%@===",model,[model valueForKey:@"endTime"]);
 }
 
+
+- (NSAttributedString *)customTextWithTimeLabel:(ZJJTimeCountDownLabel *)timeLabel timeCountDown:(ZJJTimeCountDown *)timeCountDown{
+
+    NSArray *textArray = @[[NSString stringWithFormat:@"%.2ld",timeLabel.days],
+                           @" 天",
+                           [NSString stringWithFormat:@"  %.2ld",timeLabel.hours],
+                           @" 小时",
+                           [NSString stringWithFormat:@"  %.2ld",timeLabel.minutes],
+                           @" 分",
+                           [NSString stringWithFormat:@"  %.2ld",timeLabel.seconds],
+                           @" 秒"];
+    
+    return [self dateAttributeWithTexts:textArray];
+}
+
+- (NSAttributedString *)dateAttributeWithTexts:(NSArray *)texts{
+    
+    NSDictionary *datedic = @{NSFontAttributeName:[UIFont boldSystemFontOfSize:20],NSForegroundColorAttributeName:[UIColor orangeColor]};
+    NSMutableAttributedString *dateAtt = [[NSMutableAttributedString alloc] init];
+    
+    [texts enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        NSString *text = (NSString *)obj;
+        //说明是时间字符串
+        if ([text integerValue] || [text rangeOfString:@"0"].length) {
+            [dateAtt appendAttributedString:[[NSAttributedString alloc] initWithString:text attributes:datedic]];
+        }else{
+            
+            UIColor *color = idx%3?[UIColor greenColor]:[UIColor blueColor];
+            [dateAtt appendAttributedString:[[NSAttributedString alloc] initWithString:text attributes:@{NSForegroundColorAttributeName:color}]];
+        }
+        
+    }];
+    return dateAtt;
+}
+
+
 - (void)addData{
 
 
-    NSArray *arr = @[@"2017-2-5 12:10:06",
+    NSArray *arr = @[@"2017-2-5 12:10:09",
                       @"2017-3-5 12:10:06",
-                      @"2017-7-10 18:6:16",
-                      @"2017-8-5 18:10:06",
+                      @"2017-7-10 18:6:15",
+                      @"2017-8-5 18:10:08",
                      @"2017-10-5 18:10:06",
                      @"2017-7-10 18:6:16",
-                     @"2017-8-5 18:10:06",
+                     @"2017-8-5 18:14:22",
                      @"2017-9-5 18:10:06",
-                     @"2017-10-5 18:10:06",
-                     @"2017-6-5 12:10:06",
+                     @"2017-10-5 18:15:33",
+                     @"2017-6-5 12:16:22",
                      @"2020-7-10 18:6:16",
-                     @"2017-8-5 18:10:06",
+                     @"2017-8-5 12:09:05",
                      @"2017-9-5 18:10:06",
-                     @"2017-10-5 18:10:06",
+                     @"2017-10-5 18:10:09",
                      @"2017-8-5 18:10:06",
-                     @"2017-9-5 18:10:06",
+                     @"2017-9-5 18:10:08",
                      @"2017-10-5 18:10:06",
-                     @"2017-8-5 18:10:06",
+                     @"2017-8-5 18:10:10",
                      @"2007-10-5 18:10:06",
-                     @"2017-8-5 18:10:06",
-                     @"2017-9-5 18:10:06",
+                     @"2017-8-5 18:10:45",
+                     @"2017-9-5 18:10:01",
                      @"2017-10-5 18:10:06",
-                     @"2017-8-5 18:10:06",
+                     @"2017-8-5 18:14:03",
 ];
     
-//    NSArray *arr = @[
-//                     @"20170715180616",
-//                     @"20170805181006"];
     
     for (int i = 0; i < arr.count; i ++) {
         

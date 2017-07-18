@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
   
-    self.tableView.rowHeight = 80;
+    self.tableView.rowHeight = 150;
     [self setupLess];
 }
 

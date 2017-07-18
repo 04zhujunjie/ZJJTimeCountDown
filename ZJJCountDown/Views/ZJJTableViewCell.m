@@ -23,6 +23,8 @@
     self.timeLabel = [[ZJJOneTimeCountDownLabel alloc] init];
     self.timeLabel.frame = CGRectMake(20, 0, CGRectGetWidth(self.frame)-40, 20);
     [self.contentView addSubview:self.timeLabel];
+    
+    
 }
 
 - (void)layoutSubviews{
