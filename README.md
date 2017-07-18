@@ -12,14 +12,14 @@
 
 ## 使用注意事项：      
 1、显示倒计时的label要使用ZJJTimeCountDownLabel类或者继承ZJJTimeCountDownLabel类       
-2、要在使用label前设置label属性,动态Cell上使用一定要设置timeKey属性值，非动态Cell上使用不需要设置timeKey属性值，因为内部实现已经设置好
+2、要在使用label前设置label属性,动态Cell上使用一定要设置timeKey属性值，非动态Cell上使用不需要设置timeKey属性值，因为内部实现已经设置好  
 3、在动态的UITableViewCell或UICollectionViewCell上使用倒计时label，要在UITableView或UICollectionView显示数据的代理中设置label的IndexPath属性
-和调用ZJJTimeCountDown类中的以下方法，防止滑动过快出现闪情况        
+和调用ZJJTimeCountDown类中的以下方法，防止滑动过快出现闪情况          
 ```
 - (NSAttributedString *)countDownWithModel:(id)model timeLabel:(ZJJTimeCountDownLabel *)timeLabel;
 
 ```
-4、设置textAdjustsWidthToFitFont属性值为YES，要确保label宽度够长
+4、设置textAdjustsWidthToFitFont属性值为YES，要确保label宽度够长  
 
 ZJJTimeCountDownLabel 支持对齐方式
 ```
@@ -61,7 +61,7 @@ typedef NS_ENUM(NSInteger , ZJJCountDownTimeStyle) {
 
 ## 如何使用   
 
-### 一、使用ZJJTimeCountDownLabel类或继承ZJJTimeCountDownLabel类来创建倒计时label ，        并在初始化视图时设置label属性,label的timeKey属性一定要设置，推荐以下三种设置方式
+### 一、使用ZJJTimeCountDownLabel类或继承ZJJTimeCountDownLabel类来创建倒计时label ，        并在初始化视图时设置label属性,动态Cell上的label的timeKey属性一定要设置，推荐以下三种设置方式
 
 1)、如果是使用继承ZJJTimeCountDownLabel类，在该类的.m文件中重写以下方法        
 
