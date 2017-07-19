@@ -8,7 +8,8 @@
 2、支持文本各种对齐模式        
 3、各种效果都可以通过设置ZJJTimeCountDownLabel类属性来实现        
 4、支持背景图片设置      
-5、分文本显示时间时，支持设置文字大小，来动态设置每个文本宽度     
+5、分文本显示时间时，支持设置文字大小，来动态设置每个文本宽度   
+6、动态的每个Cell中可支持多个倒计时
 
 ## 使用注意事项：      
 1、显示倒计时的label要使用ZJJTimeCountDownLabel类或者继承ZJJTimeCountDownLabel类       
