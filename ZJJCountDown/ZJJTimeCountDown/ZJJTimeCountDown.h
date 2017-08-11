@@ -55,7 +55,7 @@ typedef NS_ENUM(NSInteger , ZJJCountDownTimeStyle) {
 
 /**
  自定义时间格式方法 ，需要设置timeLabel的textStyle为ZJJTextStlyeCustom，自定义时间样式才会生效
- 如果返回值为nil或者@“”，自定义时间失败,显示时间格式为默认格式：55天05时30分10秒
+ 如果返回值为nil或者@“”，自定义时间失败，失败后显示原来时间格式
  @param timeLabel 时间label
  @param timeCountDown self
  @return 自定义时间格式字符

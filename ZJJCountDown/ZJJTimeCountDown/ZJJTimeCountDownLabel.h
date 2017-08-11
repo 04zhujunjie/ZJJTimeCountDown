@@ -27,7 +27,7 @@ typedef NS_ENUM(NSInteger ,ZJJTextStlye){
 typedef NS_ENUM(NSUInteger, ZJJTextEffectStlye) {
     ZJJTextEffectStlyeNone                     = 0,
     /**
-     描边效果 配合textHollowWidth和textHollowColor两个属性使用，textHollowWidth默认是4  textHollowColor 默认是字体颜色
+     描边效果  配合textHollowWidth和textHollowColor两个属性使用，textHollowWidth默认是4  textHollowColor 默认是字体颜色
      注意：⚠️ 如果设置textHollowWidth > 0 时为空心效果，全部字体颜色都为描边颜色 如果设置textHollowWidth < 0 时，描边颜色为textHollowColor，中间的颜色为字体颜色
      */
     ZJJTextEffectStlyeHollow,
