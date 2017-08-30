@@ -8,7 +8,21 @@
 
 #import "TableViewGroupController.h"
 
+
+static NSInteger const kZJJHeaderHeight = 30;
+static NSInteger const kZJJFooterHeight = 40;
+
 @interface TableViewGroupController ()
+//表格区头数据
+@property (nonatomic ,strong) NSMutableArray *headerDatas;
+//缓存表格区头视图
+@property (nonatomic ,strong) NSMutableDictionary *headerViewDic;
+
+
+//表格区尾数据
+@property (nonatomic ,strong) NSMutableArray *footerDatas;
+//缓存表格区尾数视图
+@property (nonatomic ,strong) NSMutableDictionary *footerViewDic;
 
 @end
 
@@ -19,6 +33,11 @@
     [super viewDidLoad];
     UINib*nib = [UINib nibWithNibName:NSStringFromClass([TableViewCell class]) bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"one"];
+    
+    //设置分组区头数据源
+    [self.countDown setupScrollViewHeaderInSectionsWithDatas:self.headerDatas];
+    //设置分组区尾数据源
+    [self.countDown setupScrollViewFooterInSectionsWithDatas:self.footerDatas];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -68,23 +87,73 @@
     cell.threeTImeLabel.attributedText = [self.countDown countDownWithModel:model timeLabel:cell.threeTImeLabel];
 }
 
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
 
-    return 20;
+    return kZJJHeaderHeight;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
 
-    return 0.001;
+    return kZJJFooterHeight;
 }
+
+
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
 
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 20)];
+    
+    if (self.headerViewDic[@(section)]) {
+        
+        ZJJTimeCountDownLabel *label = self.headerViewDic[@(section)];
+        id model = self.headerDatas[section];
+        //需要从新设置文本，才能及时更新倒计时
+        label.attributedText = [self.countDown countDownWithModel:model timeLabel:label];
+        return self.headerViewDic[@(section)];
+    }
+
+    ZJJTimeCountDownLabel *label=[[ZJJTimeCountDownLabel alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), kZJJHeaderHeight)];
+    label.timeKey = @"startTime";
+    id model = self.headerDatas[section];
+    label.attributedText = [self.countDown countDownWithModel:model timeLabel:label];
     label.backgroundColor = [UIColor colorWithRed:0 green:0 blue:1 alpha:0.8];
     label.textColor = [UIColor whiteColor];
-    label.text = [NSString stringWithFormat:@"  第%ld组/%ld组",section,self.dataList.count];
+    [self.headerViewDic setObject:label forKey:@(section)];
     return label;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    
+    
+    UIView *view = self.footerViewDic[@(section)];
+    if (view) {
+        for (UIView *subView in view.subviews ) {
+           
+            if ([subView isKindOfClass:[ZJJTimeCountDownLabel class]]) {
+                ZJJTimeCountDownLabel *timeLabel = (ZJJTimeCountDownLabel *)subView;
+                id model = self.footerDatas[section];
+                //需要从新设置文本，才能及时更新倒计时
+                timeLabel.attributedText = [self.countDown countDownWithModel:model timeLabel:timeLabel];
+            }
+        }
+        return view;
+    }
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), kZJJFooterHeight)];
+    footerView.backgroundColor = [UIColor orangeColor];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 150, 30)];
+    label.center = CGPointMake(label.center.x, kZJJFooterHeight/2.0);
+    label.text = [NSString stringWithFormat:@"区尾[%ld/%ld]",section,self.footerDatas.count];
+    [footerView addSubview:label];
+    ZJJTimeCountDownLabel *timeLabel=[[ZJJTimeCountDownLabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(label.frame)+5, 0, CGRectGetWidth(self.view.frame)-CGRectGetWidth(label.frame)-25, kZJJHeaderHeight)];
+    timeLabel.center = CGPointMake(timeLabel.center.x, kZJJFooterHeight/2.0);
+    timeLabel.timeKey = @"startTime";
+    id model = self.footerDatas[section];
+    timeLabel.attributedText = [self.countDown countDownWithModel:model timeLabel:timeLabel];
+    timeLabel.textColor = [UIColor whiteColor];
+    [footerView addSubview:timeLabel];
+    [self.footerViewDic setObject:footerView forKey:@(section)];
+    
+    return footerView;
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -94,6 +163,10 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    //移除区头缓存视图
+    [self.headerViewDic removeAllObjects];
+    //移除区尾缓存视图
+    [self.footerViewDic removeAllObjects];
     TimeModel *model = self.dataList[indexPath.section][indexPath.row];
     [self.countDown deleteReloadDataWithModel:model indexPath:indexPath];
 }
@@ -120,15 +193,59 @@
         
         [self.dataList addObject:arrM];
     }
+    for (int i = 0; i < self.dataList.count; i ++) {
+        TimeModel *model = [TimeModel new];
+        model.startTime = arr[i%6];
+        [self.headerDatas addObject:model];
+    }
+    
+    for (int i = 0; i < self.dataList.count; i ++) {
+        TimeModel *model = [TimeModel new];
+        model.startTime = arr[i%6];
+        [self.footerDatas addObject:model];
+    }
     
 }
 
 - (ZJJTimeCountDown *)countDown{
     
     ZJJTimeCountDown *countDown = [super countDown];
+    countDown.delegate = self;
     //时间格式为时间戳
     countDown.timeStyle = ZJJCountDownTimeStyleTamp;
     return countDown;
+}
+
+- (NSMutableArray *)headerDatas{
+    
+    if (!_headerDatas) {
+        _headerDatas = [NSMutableArray array];
+    }
+    return _headerDatas;
+}
+
+- (NSMutableDictionary *)headerViewDic{
+    
+    if (!_headerViewDic) {
+        _headerViewDic = [NSMutableDictionary dictionary];
+    }
+    return _headerViewDic;
+}
+
+- (NSMutableArray *)footerDatas{
+    
+    if (!_footerDatas) {
+        _footerDatas = [NSMutableArray array];
+    }
+    return _footerDatas;
+}
+
+- (NSMutableDictionary *)footerViewDic{
+    
+    if (!_footerViewDic) {
+        _footerViewDic = [NSMutableDictionary dictionary];
+    }
+    return _footerViewDic;
 }
 
 - (void)didReceiveMemoryWarning {

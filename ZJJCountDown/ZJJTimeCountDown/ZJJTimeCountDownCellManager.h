@@ -29,6 +29,14 @@
 
 @property (nonatomic ,weak) id <ZJJTimeCountDownCellManagerDelegate> delegate;
 
+@property (nonatomic, strong) NSMutableArray *footerSectionDataList;
+@property (nonatomic, strong) NSMutableArray *headerSectionDataList;
+/**
+ 初始化
+
+ @param scrollView 滑动视图
+ @param dataList 表格数据源
+ */
 - (instancetype)initWithScrollView:(UIScrollView *)scrollView dataList:(NSMutableArray *)dataList;
 
 /**

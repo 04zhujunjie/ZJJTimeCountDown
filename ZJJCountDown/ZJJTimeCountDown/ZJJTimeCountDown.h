@@ -10,7 +10,6 @@
 #import <UIKit/UIKit.h>
 #import "ZJJTimeCountDownLabel.h"
 
-
 @class ZJJTimeCountDown;
 
 typedef NS_ENUM(NSInteger , ZJJCountDownTimeStyle) {
@@ -91,6 +90,21 @@ typedef NS_ENUM(NSInteger , ZJJCountDownTimeStyle) {
  @return 初始化对象
  */
 - (instancetype)initWithScrollView:(UIScrollView *)scrollView dataList:(NSMutableArray *)dataList;
+
+
+/**
+ 设置分组区头数据源
+
+ @param datas 数据源
+ */
+- (void)setupScrollViewHeaderInSectionsWithDatas:(NSMutableArray *)datas;
+
+/**
+ 设置分组区尾数据源
+
+ @param datas 数据源
+ */
+- (void)setupScrollViewFooterInSectionsWithDatas:(NSMutableArray *)datas;
 
 /**
  删除数据 针对UITableView 或者 UICollectionView上的倒计时视图

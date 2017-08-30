@@ -8,9 +8,9 @@
 
 #import "ZJJTimeCountDown.h"
 #import "ZJJTimeCountDownDateTool.h"
+#import "ZJJTimeCountDownLabelTextStlyeTool.h"
 #import "ZJJTimeCountDownCellManager.h"
 #import "ZJJTimeCountDownLabelManager.h"
-#import "ZJJTimeCountDownLabelTextStlyeTool.h"
 
 @interface ZJJTimeCountDown ()<ZJJTimeCountDownCellManagerDelegate ,ZJJTimeCountDownLabelManagerDelegate>
 
@@ -40,6 +40,25 @@
        
     }
     return self;
+}
+
+/**
+ 设置分组区头数据源
+ 
+ @param datas 数据源
+ */
+- (void)setupScrollViewHeaderInSectionsWithDatas:(NSMutableArray *)datas{
+
+    _cellManager.headerSectionDataList = datas;
+}
+
+/**
+ 设置分组区尾数据源
+ 
+ @param datas 数据源
+ */
+- (void)setupScrollViewFooterInSectionsWithDatas:(NSMutableArray *)datas{
+    _cellManager.footerSectionDataList = datas;
 }
 
 // 滑动过快的时候时间不会闪  (tableViewcell数据源方法里实现即可)

@@ -20,13 +20,17 @@
     
     self = [super init];
     if (self) {
-        
-        [self isTableViewOrCollectionView:scrollView];
-        _countDownScrollView  = scrollView;
-        _dataList = dataList;
-        [self countDownWithScrollView:_countDownScrollView  dataList:_dataList];
+         _dataList = dataList;
+         [self initWithScrollView:scrollView];
     }
     return self;
+}
+
+- (void)initWithScrollView:(UIScrollView *)scrollView {
+
+    [self isTableViewOrCollectionView:scrollView];
+    _countDownScrollView  = scrollView;
+    [self countDownWithScrollView:_countDownScrollView];
 }
 
 - (BOOL)isTableViewOrCollectionView:(UIScrollView *)scrollView{
@@ -39,7 +43,7 @@
     return NO;
 }
 
-- (void)countDownWithScrollView:(UIScrollView*)scrollView dataList:(NSMutableArray*)dataList {
+- (void)countDownWithScrollView:(UIScrollView*)scrollView {
     
     if (_timer==nil) {
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -57,23 +61,95 @@
 
 - (void)setupScrollViewTimeLabelText{
     
-    if (!_dataList.count) {
-        return;
-    }
     if ([self countDownTableView]) {
+        
+        //设置tableViewCell上倒计时
+        [self setupTabelViewCellTimeLabel];
+        //设置tableView区头和区尾倒计时
+        [self setupTabelViewHeaderOrFooterTimeLabel];
+       
+    }
+    if ([self countDownCollectionView]) {
+        
+         //设置CollectionCell上倒计时
+        [self setupCollectionCellTimeLabel];
+      
+    }
+    
+}
+
+
+/**
+ 设置tableViewCell上倒计时
+ */
+- (void)setupTabelViewCellTimeLabel{
+
+    if (_dataList.count) {
         
         NSArray  *cells = [self countDownTableView].visibleCells; //取出屏幕可见UITableViewCell
         for (UITableViewCell * cell in cells) {
             [self setupCellTimeLabelWithContentView:cell.contentView];
         }
     }
-    if ([self countDownCollectionView]) {
+}
+
+/**
+ 设置tableView区头和区尾倒计时
+ */
+- (void)setupTabelViewHeaderOrFooterTimeLabel{
+
+    
+    if (_headerSectionDataList.count) {
+        //获取可见的组
+        NSArray *indexPaths = [self countDownTableView].indexPathsForVisibleRows;
+        for (NSIndexPath *indexPath in indexPaths) {
+
+            id model = _headerSectionDataList[indexPath.section];
+            UIView *view = [[self countDownTableView].delegate tableView:[self countDownTableView] viewForHeaderInSection:indexPath.section];
+            [self setupTabelTiemLabelWithView:view model:model];
+        }
+    }
+    
+    if (_footerSectionDataList.count) {
+        
+        //获取可见的组
+        NSArray *indexPaths = [self countDownTableView].indexPathsForVisibleRows;
+        for (NSIndexPath *indexPath in indexPaths) {
+            id model = _footerSectionDataList[indexPath.section];
+            UIView *view = [[self countDownTableView].delegate tableView:[self countDownTableView] viewForFooterInSection:indexPath.section];
+            [self setupTabelTiemLabelWithView:view model:model];
+        }
+        
+    }
+}
+
+- (void)setupCollectionCellTimeLabel{
+
+    if (_dataList.count) {
+        
         NSArray  *cells = [self countDownCollectionView].visibleCells; //取出屏幕可见UICollectionViewCell
         for (UICollectionViewCell * cell in cells) {
             [self setupCellTimeLabelWithContentView:cell.contentView];
         }
     }
+}
+
+- (void)setupTabelTiemLabelWithView:(UIView *)view model:(id)model{
+
     
+    if ([view isKindOfClass:[ZJJTimeCountDownLabel class]]) {
+        
+        ZJJTimeCountDownLabel *timeLabel = (ZJJTimeCountDownLabel *)view;
+         [self setupAttributedText:timeLabel model:model];
+        NSLog(@"====++++++=timeLabel.text===%@====",timeLabel.text);
+    }
+    
+    for (UIView * contentSubView in view.subviews) {
+        if ([contentSubView isKindOfClass:[ZJJTimeCountDownLabel class]]) {
+            ZJJTimeCountDownLabel *timeLabel = (ZJJTimeCountDownLabel *)contentSubView;
+            [self setupAttributedText:timeLabel model:model];
+        }
+    }
 }
 
 - (void)setupCellTimeLabelWithContentView:(UIView *)contentView{
@@ -108,7 +184,7 @@
                     return;
                 }
             }
-            NSAttributedString *timeStr = [self.delegate cellTimeStringWithModel:model timeLabel:timeLabel];
+           
             if ([self isAutomaticallyDeletedWithModel:model timeLabel:timeLabel]) {
                 
                 if ([self.delegate respondsToSelector:@selector(cellAutomaticallyDeleteWithModel:)]) {
@@ -118,10 +194,16 @@
                 [self setupScrollViewTimeLabelText];
                 
             }else{
-                timeLabel.attributedText = timeStr ;
+                [self setupAttributedText:timeLabel model:model];
             }
         }
     }
+}
+
+- (void)setupAttributedText:(ZJJTimeCountDownLabel *)timeLabel model:(id)model{
+
+    NSAttributedString *timeStr = [self.delegate cellTimeStringWithModel:model timeLabel:timeLabel];
+    timeLabel.attributedText = timeStr ;
 }
 
 - (void)deleteReloadDataWithModel:(id)model indexPath:(NSIndexPath *)indexPath{
@@ -135,6 +217,12 @@
             [arr removeObject:model];
             if (arr.count == 0) {
                 [_dataList removeObject:deleteSection];
+                if (self.headerSectionDataList.count >= indexPath.section) {
+                    [self.headerSectionDataList removeObjectAtIndex:indexPath.section];
+                }
+                if (self.footerSectionDataList.count >=indexPath.section) {
+                    [self.footerSectionDataList removeObjectAtIndex:indexPath.section];
+                }
             }else{
                 
                 [_dataList replaceObjectAtIndex:indexPath.section withObject:arr];
