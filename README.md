@@ -10,9 +10,11 @@
 4、支持背景图片设置      
 5、分文本显示时间时，支持设置文字大小，来动态设置每个文本宽度   
 6、动态的每个Cell中可支持多个倒计时
+## 支持pod导入
+pod 'ZJJTimeCountDown', '~> 1.0.0'
 
-## 使用注意事项：      
-1、显示倒计时的label要使用ZJJTimeCountDownLabel类或者继承ZJJTimeCountDownLabel类       
+## 使用注意事项：      
+1、显示倒计时的label要使用ZJJTimeCountDownLabel类或者继承ZJJTimeCountDownLabel类       
 2、要在使用label前设置label属性,动态Cell上使用一定要设置timeKey属性值，非动态Cell上使用不需要设置timeKey属性值，因为内部实现已经设置好  
 3、在动态的UITableViewCell或UICollectionViewCell上使用倒计时label，要在UITableView或UICollectionView显示数据的代理中设置label的IndexPath属性
 和调用ZJJTimeCountDown类中的以下方法，防止滑动过快出现闪情况          
