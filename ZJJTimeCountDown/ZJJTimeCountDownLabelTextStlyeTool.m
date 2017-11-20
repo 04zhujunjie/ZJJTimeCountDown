@@ -79,10 +79,10 @@
     
     NSMutableArray *textArray = [NSMutableArray array];
     NSString *dayStr;NSString *hourStr;NSString *minuteStr;NSString *secondStr;
-    dayStr = [NSString stringWithFormat:@"%.2ld%@",label.days,label.dayAddString];
-    hourStr = [NSString stringWithFormat:@"%.2ld%@",label.hours,label.hourAddString];
-    minuteStr = [NSString stringWithFormat:@"%.2ld%@",label.minutes,label.minuteAddString];
-    secondStr = [NSString stringWithFormat:@"%.2ld%@",label.seconds,label.secondAddString];
+    dayStr = [NSString stringWithFormat:@"%.2ld%@",(long)label.days,label.dayAddString];
+    hourStr = [NSString stringWithFormat:@"%.2ld%@",(long)label.hours,label.hourAddString];
+    minuteStr = [NSString stringWithFormat:@"%.2ld%@",(long)label.minutes,label.minuteAddString];
+    secondStr = [NSString stringWithFormat:@"%.2ld%@",(long)label.seconds,label.secondAddString];
     
     if (label.textIntervalSymbol) {
         
@@ -112,9 +112,9 @@
     NSMutableArray *textArray = [NSMutableArray array];
     NSString *hourStr;NSString *minuteStr;NSString *secondStr;
     
-    hourStr = [NSString stringWithFormat:@"%.2ld%@",hours,label.hourAddString];
-    minuteStr = [NSString stringWithFormat:@"%.2ld%@",label.minutes,label.minuteAddString];
-    secondStr = [NSString stringWithFormat:@"%.2ld%@",label.seconds,label.secondAddString];
+    hourStr = [NSString stringWithFormat:@"%.2ld%@",(long)hours,label.hourAddString];
+    minuteStr = [NSString stringWithFormat:@"%.2ld%@",(long)label.minutes,label.minuteAddString];
+    secondStr = [NSString stringWithFormat:@"%.2ld%@",(long)label.seconds,label.secondAddString];
     
     if (label.textIntervalSymbol) {
         [textArray addObject:hourStr];
@@ -139,8 +139,8 @@
     NSMutableArray *textArray = [NSMutableArray array];
     NSString *minuteStr;NSString *secondStr;
     
-    minuteStr = [NSString stringWithFormat:@"%.2ld%@",minutes,label.minuteAddString];
-    secondStr = [NSString stringWithFormat:@"%.2ld%@",label.seconds,label.secondAddString];
+    minuteStr = [NSString stringWithFormat:@"%.2ld%@",(long)minutes,label.minuteAddString];
+    secondStr = [NSString stringWithFormat:@"%.2ld%@",(long)label.seconds,label.secondAddString];
     
     if (label.textIntervalSymbol) {
         [textArray addObject:minuteStr];
@@ -160,7 +160,7 @@
 
     NSMutableArray *textArray = [NSMutableArray array];
     NSString *secondStr;
-     secondStr = [NSString stringWithFormat:@"%.2ld%@",label.totalSeconds,label.secondAddString];
+     secondStr = [NSString stringWithFormat:@"%.2ld%@",(long)label.totalSeconds,label.secondAddString];
     
     if (label.textIntervalSymbol) {
 

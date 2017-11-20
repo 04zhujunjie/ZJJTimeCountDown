@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 s.name         = 'ZJJTimeCountDown'
 s.version      = '1.0.0'
-s.summary      = 'An easy way to use pull-to-model'
+s.summary      = '一个已封装，简单易用的倒计时'
 s.homepage     = 'https://github.com/04zhujunjie/ZJJTimeCountDown'
 s.license      = 'MIT'
 s.authors      = {'xiaozhu' => 'xswt04zjj@163.com'}

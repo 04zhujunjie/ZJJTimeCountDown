@@ -204,7 +204,7 @@ static NSString * const kCollectionViewID = @"collectionView";
     
     for (int i = 0; i < 100; i ++) {
         WatchModel *model = [WatchModel new];
-        model.imageName = [NSString stringWithFormat:@"watch%ld",arc4random()%5];
+        model.imageName = [NSString stringWithFormat:@"watch%d",arc4random()%5];
         model.startTime = [ZJJTimeCountDownDateTool dateByAddingSeconds:arc4random()%10000+60 timeStyle:_countDown.timeStyle];
         [self.dataList addObject:model];
     }

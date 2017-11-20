@@ -147,18 +147,18 @@
     NSDate * sjDate = [NSDate date];   //手机时间
     NSInteger sjInteger = [sjDate timeIntervalSince1970];  // 手机当前时间戳
     long long endTimeTamp = [ZJJTimeCountDownDateTool getTimeTampWithStr:serverEndTime timeStyle:self.timeStyle];
-    NSInteger endTime = endTimeTamp + _less;
+    long long endTime = endTimeTamp + _less;
     return [self getNowTimeWithStartTimeTamp:sjInteger endTimeTamp:endTime timeLabel:timeLabel];
 }
 
-- (NSAttributedString *)getNowTimeWithStartTimeTamp:(NSInteger )startTimeTamp endTimeTamp:(NSInteger)endTimeTamp timeLabel:(ZJJTimeCountDownLabel *)timeLabel{
+- (NSAttributedString *)getNowTimeWithStartTimeTamp:(NSInteger )startTimeTamp endTimeTamp:(long long)endTimeTamp timeLabel:(ZJJTimeCountDownLabel *)timeLabel{
     
     NSTimeInterval timeInterval = endTimeTamp - startTimeTamp;
     //    NSLog(@"%f",timeInterval);
-    int days = (int)(timeInterval/(3600*24));
-    int hours = (int)((timeInterval-days*24*3600)/3600);
-    int minutes = (int)(timeInterval-days*24*3600-hours*3600)/60;
-    int seconds = timeInterval-days*24*3600-hours*3600-minutes*60;
+    NSInteger days = (NSInteger)(timeInterval/(3600*24));
+    NSInteger hours = (NSInteger)((timeInterval-days*24*3600)/3600);
+    NSInteger minutes = (NSInteger)(timeInterval-days*24*3600-hours*3600)/60;
+    NSInteger seconds = timeInterval-days*24*3600-hours*3600-minutes*60;
     
     timeLabel.days = days;
     timeLabel.hours = hours;
@@ -203,9 +203,9 @@
         }
     }
     if (timeLabel.days){
-        return [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%ld天 %.2ld小时 %.2ld分 %.2ld秒",timeLabel.days,timeLabel.hours, timeLabel.minutes,timeLabel.seconds]];
+        return [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%ld天 %.2ld小时 %.2ld分 %.2ld秒",(long)timeLabel.days,(long)timeLabel.hours, (long)timeLabel.minutes,(long)timeLabel.seconds]];
     }
-    return [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%.2ld小时 %.2ld分 %.2ld秒",timeLabel.hours, timeLabel.minutes,timeLabel.seconds]];
+    return [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%.2ld小时 %.2ld分 %.2ld秒",(long)timeLabel.hours, (long)timeLabel.minutes,(long)timeLabel.seconds]];
 }
 
 
