@@ -11,18 +11,20 @@
 5、分文本显示时间时，支持设置文字大小，来动态设置每个文本宽度   
 6、动态的每个Cell中可支持多个倒计时
 ## 支持pod导入
-pod 'ZJJTimeCountDown', '~> 1.0.0'
+pod 'ZJJTimeCountDown', '~> 1.0.1'
 
 ## 使用注意事项：      
 1、显示倒计时的label要使用ZJJTimeCountDownLabel类或者继承ZJJTimeCountDownLabel类       
 2、要在使用label前设置label属性,动态Cell上使用一定要设置timeKey属性值，非动态Cell上使用不需要设置timeKey属性值，因为内部实现已经设置好  
-3、在动态的UITableViewCell或UICollectionViewCell上使用倒计时label，要在UITableView或UICollectionView显示数据的代理中设置label的IndexPath属性
-和调用ZJJTimeCountDown类中的以下方法，防止滑动过快出现闪情况          
+3、在动态的UITableViewCell或UICollectionViewCell上使用倒计时label，需要调用以下两个方法        
 ```
+- (void)setupCellWithModel:(id)model indexPath:(NSIndexPath *)indexPath;
+
 - (NSAttributedString *)countDownWithModel:(id)model timeLabel:(ZJJTimeCountDownLabel *)timeLabel;
 
 ```
 4、设置textAdjustsWidthToFitFont属性值为YES，要确保label宽度够长  
+
 
 ZJJTimeCountDownLabel 支持对齐方式
 ```
@@ -126,13 +128,20 @@ _countDown = [[ZJJTimeCountDown alloc] initWithScrollView:self.tableView dataLis
         cell = [[ZJJTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellID];
     }
     TimeModel *model = self.dataList[indexPath.row];
-    //必须设置所显示的行
-    cell.timeLabel.indexPath = indexPath;
-    //在不设置为过时自动删除情况下 滑动过快的时候时间不会闪
-    cell.timeLabel.attributedText = [self.countDown countDownWithModel:model timeLabel:cell.timeLabel];
+    //一定要设置，设置时间数据
+    [cell.timeLabel setupCellWithModel:model indexPath:indexPath];
+    //在不设置为过时自动删除情况下 设置该方法后，滑动过快的时候时间不会闪情况
+    cell.timeLabel.attributedText = [self.countDown countDownWithTimeLabel:cell.timeLabel];
     
     return cell;
 }
+```
+3）、在Cell的区头或区尾上使用，返回的区头或区尾视图代理方法中，要先调用以下方法，对视图进行处理
+```
+- (UIView *)dealWithHeaderView:(UIView *)view viewForHeaderInSection:(NSInteger)section;
+
+- (UIView *)dealWithFooterView:(UIView *)view viewForFooterInSection:(NSInteger)section;
+
 ```
 #### 2 非动态的UITableViewCell或UICollectionViewCell上使用
 
