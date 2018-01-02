@@ -31,9 +31,9 @@
         cell = [[ZJJTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellID];
     }
     TimeModel *model = self.dataList[indexPath.row];
-    //设置时间数据
+    //一定要设置，设置时间数据
     [cell.timeLabel setupCellWithModel:model indexPath:indexPath];
-    //在不设置为过时自动删除情况下 滑动过快的时候时间不会闪
+    //在不设置为过时自动删除情况下 设置该方法后，滑动过快的时候时间不会闪情况
     cell.timeLabel.attributedText = [self.countDown countDownWithTimeLabel:cell.timeLabel];
     
     return cell;
