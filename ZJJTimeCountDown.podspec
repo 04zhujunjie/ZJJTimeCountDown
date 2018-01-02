@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
 s.name         = 'ZJJTimeCountDown'
-s.version      = '1.0.0'
+s.version      = '1.0.1'
 s.summary      = '一个已封装，简单易用的倒计时'
 s.homepage     = 'https://github.com/04zhujunjie/ZJJTimeCountDown'
 s.license      = 'MIT'

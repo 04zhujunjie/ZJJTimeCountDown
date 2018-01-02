@@ -9,6 +9,10 @@
 #import "ZJJTimeCountDownCellManager.h"
 #import "ZJJTimeCountDownLabel.h"
 
+@interface ZJJTimeCountDownCellManager()
+
+@end
+
 @implementation ZJJTimeCountDownCellManager{
 
     dispatch_source_t _timer;
@@ -22,6 +26,7 @@
     if (self) {
          _dataList = dataList;
          [self initWithScrollView:scrollView];
+       
     }
     return self;
 }
@@ -63,10 +68,11 @@
     
     if ([self countDownTableView]) {
         
-        //设置tableViewCell上倒计时
-        [self setupTabelViewCellTimeLabel];
         //设置tableView区头和区尾倒计时
         [self setupTabelViewHeaderOrFooterTimeLabel];
+        //设置tableViewCell上倒计时
+        [self setupTabelViewCellTimeLabel];
+        
        
     }
     if ([self countDownCollectionView]) {
@@ -98,29 +104,40 @@
  */
 - (void)setupTabelViewHeaderOrFooterTimeLabel{
 
-    
-    if (_headerSectionDataList.count) {
+    NSInteger headerCount = self.headerSectionDic.allKeys.count;
+    NSInteger footerCount = self.footerSectionDic.allKeys.count;
+    if (headerCount || footerCount) {
         //获取可见的组
         NSArray *indexPaths = [self countDownTableView].indexPathsForVisibleRows;
+        NSMutableDictionary *iPD = [NSMutableDictionary dictionary];
+        
         for (NSIndexPath *indexPath in indexPaths) {
+            [iPD setObject:@(indexPath.section) forKey:@(indexPath.section)];
+        }
+        NSArray *keys = [iPD allKeys];
+        for (NSNumber *section in keys) {
+            if (headerCount) {
+                UIView *headerView = self.headerSectionDic[section];
+                if (headerView) {
+                    [self setupTabelTimeLabelWithView:headerView];
+                }
+            }
+            if (footerCount) {
+                UIView *footerView = self.footerSectionDic[section];
+                if (footerView) {
+                    [self setupTabelTimeLabelWithView:footerView];
+                }
+            }
 
-            id model = _headerSectionDataList[indexPath.section];
-            UIView *view = [[self countDownTableView].delegate tableView:[self countDownTableView] viewForHeaderInSection:indexPath.section];
-            [self setupTabelTiemLabelWithView:view model:model];
         }
     }
     
-    if (_footerSectionDataList.count) {
-        
-        //获取可见的组
-        NSArray *indexPaths = [self countDownTableView].indexPathsForVisibleRows;
-        for (NSIndexPath *indexPath in indexPaths) {
-            id model = _footerSectionDataList[indexPath.section];
-            UIView *view = [[self countDownTableView].delegate tableView:[self countDownTableView] viewForFooterInSection:indexPath.section];
-            [self setupTabelTiemLabelWithView:view model:model];
-        }
-        
-    }
+
+}
+
+- (UIView *)cellHeaderSectionViewWithIndexPath:(NSIndexPath *)indexPath{
+    
+    return self.headerSectionDic[@(indexPath.row)];
 }
 
 - (void)setupCollectionCellTimeLabel{
@@ -134,20 +151,25 @@
     }
 }
 
-- (void)setupTabelTiemLabelWithView:(UIView *)view model:(id)model{
+- (void)setupTabelTimeLabelWithView:(UIView *)view{
 
     
     if ([view isKindOfClass:[ZJJTimeCountDownLabel class]]) {
         
         ZJJTimeCountDownLabel *timeLabel = (ZJJTimeCountDownLabel *)view;
-         [self setupAttributedText:timeLabel model:model];
+        if (timeLabel.model) {
+           [self setupAttributedText:timeLabel model:timeLabel.model];
+        }
+        
         NSLog(@"====++++++=timeLabel.text===%@====",timeLabel.text);
     }
     
     for (UIView * contentSubView in view.subviews) {
         if ([contentSubView isKindOfClass:[ZJJTimeCountDownLabel class]]) {
             ZJJTimeCountDownLabel *timeLabel = (ZJJTimeCountDownLabel *)contentSubView;
-            [self setupAttributedText:timeLabel model:model];
+            if (timeLabel.model) {
+                [self setupAttributedText:timeLabel model:timeLabel.model];
+            }
         }
     }
 }
@@ -217,12 +239,8 @@
             [arr removeObject:model];
             if (arr.count == 0) {
                 [_dataList removeObject:deleteSection];
-                if (self.headerSectionDataList.count >= indexPath.section) {
-                    [self.headerSectionDataList removeObjectAtIndex:indexPath.section];
-                }
-                if (self.footerSectionDataList.count >=indexPath.section) {
-                    [self.footerSectionDataList removeObjectAtIndex:indexPath.section];
-                }
+                [self.headerSectionDic removeAllObjects];
+                [self.footerSectionDic removeAllObjects];
             }else{
                 
                 [_dataList replaceObjectAtIndex:indexPath.section withObject:arr];
@@ -278,6 +296,20 @@
         return collectionView;
     }
     return nil;
+}
+
+- (NSMutableDictionary *)headerSectionDic{
+    if (!_headerSectionDic) {
+        _headerSectionDic = [NSMutableDictionary dictionary];
+    }
+    return _headerSectionDic;
+}
+
+- (NSMutableDictionary *)footerSectionDic{
+    if (!_footerSectionDic) {
+        _footerSectionDic = [NSMutableDictionary dictionary];
+    }
+    return _footerSectionDic;
 }
 
 /**

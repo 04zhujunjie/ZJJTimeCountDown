@@ -22,15 +22,15 @@
 
 - (NSAttributedString *)cellTimeStringWithModel:(id)model timeLabel:(ZJJTimeCountDownLabel *)timeLabel;
 
-
 @end
 
 @interface ZJJTimeCountDownCellManager : NSObject
 
 @property (nonatomic ,weak) id <ZJJTimeCountDownCellManagerDelegate> delegate;
 
-@property (nonatomic, strong) NSMutableArray *footerSectionDataList;
-@property (nonatomic, strong) NSMutableArray *headerSectionDataList;
+
+@property (nonatomic ,strong) NSMutableDictionary *headerSectionDic;
+@property (nonatomic ,strong) NSMutableDictionary *footerSectionDic;
 /**
  初始化
 

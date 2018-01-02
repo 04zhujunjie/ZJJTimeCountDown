@@ -22,8 +22,6 @@ static NSString *const kZJJTimeCountDownLabelDescription = @"活动已经结束�
     NSMutableArray *_textWidthArray;
 }
 
-
-
 @end
 
 @implementation ZJJTimeCountDownLabel
@@ -77,7 +75,16 @@ static NSString *const kZJJTimeCountDownLabelDescription = @"活动已经结束�
     
 }
 
-
+/**
+ 设置Cell数据
+ 
+ @param model 数据模型
+ @param indexPath 设置文本所在位置在位置
+ */
+- (void)setupCellWithModel:(id)model indexPath:(NSIndexPath *)indexPath{
+    self.indexPath = indexPath;
+    self.model = model;
+}
 
 - (void)setupDateChineseAddString{
 

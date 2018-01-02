@@ -86,10 +86,14 @@ typedef NS_ENUM(NSInteger ,ZJJTextAlignmentStlye){
 @property (nonatomic ,strong) NSString *timeKey;
 
 /**
+ 对应模型
+ */
+@property (nonatomic ,strong) id model;
+
+/**
  设置文本所在位置在（动态的UITableViewCell或UICollectionViewCell上使用）
  */
 @property (nonatomic ,strong) NSIndexPath *indexPath;
-
 /**
  是否将过时的数据进行删除（在动态的UITableViewCell或UICollectionViewCell上使用）
  */
@@ -286,5 +290,13 @@ typedef NS_ENUM(NSInteger ,ZJJTextAlignmentStlye){
  继承该类后，可重新设置属性值
  */
 - (void)setupProperty;
+
+/**
+ 设置Cell数据
+
+ @param model 数据模型
+ @param indexPath 设置文本所在位置在位置
+ */
+- (void)setupCellWithModel:(id)model indexPath:(NSIndexPath *)indexPath;
 
 @end

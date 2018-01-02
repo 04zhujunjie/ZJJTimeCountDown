@@ -31,18 +31,14 @@
         cell = [[ZJJTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellID];
     }
     TimeModel *model = self.dataList[indexPath.row];
-    //必须设置所显示的行
-    cell.timeLabel.indexPath = indexPath;
+    //设置时间数据
+    [cell.timeLabel setupCellWithModel:model indexPath:indexPath];
     //在不设置为过时自动删除情况下 滑动过快的时候时间不会闪
-    cell.timeLabel.attributedText = [self.countDown countDownWithModel:model timeLabel:cell.timeLabel];
+    cell.timeLabel.attributedText = [self.countDown countDownWithTimeLabel:cell.timeLabel];
     
     return cell;
 }
 
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    
-    NSLog(@"=======%s=====",__func__);
-}
 
 - (ZJJTimeCountDown *)countDown{
 

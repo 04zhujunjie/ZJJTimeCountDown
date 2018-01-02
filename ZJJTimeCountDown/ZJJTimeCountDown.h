@@ -93,20 +93,6 @@ typedef NS_ENUM(NSInteger , ZJJCountDownTimeStyle) {
 
 
 /**
- 设置分组区头数据源
-
- @param datas 数据源
- */
-- (void)setupScrollViewHeaderInSectionsWithDatas:(NSMutableArray *)datas;
-
-/**
- 设置分组区尾数据源
-
- @param datas 数据源
- */
-- (void)setupScrollViewFooterInSectionsWithDatas:(NSMutableArray *)datas;
-
-/**
  删除数据 针对UITableView 或者 UICollectionView上的倒计时视图
 
  @param model 数据模型
@@ -114,17 +100,33 @@ typedef NS_ENUM(NSInteger , ZJJCountDownTimeStyle) {
  */
 - (void)deleteReloadDataWithModel:(id)model indexPath:(NSIndexPath *)indexPath;
 
-//
 
 /**
  
-  滑动过快的时候时间不会闪 (UITableViewCell 或者UICollectionViewCell 数据源方法里实现即可)
+ 滑动过快的时候时间不会闪 (UITableViewCell 或者UICollectionViewCell 数据源方法里实现即可)
  
- @param model 数据模型
  @param timeLabel 倒计时视图
  @return 显示时间
  */
-- (NSAttributedString *)countDownWithModel:(id)model timeLabel:(ZJJTimeCountDownLabel *)timeLabel;
+- (NSAttributedString *)countDownWithTimeLabel:(ZJJTimeCountDownLabel *)timeLabel;
+
+/**
+ 对表格区头视图进行处理
+
+ @param view 区头视图
+ @param section 区头视图位置
+ @return 处理后的视图
+ */
+- (UIView *)dealWithHeaderView:(UIView *)view viewForHeaderInSection:(NSInteger)section;
+
+/**
+ 对表格区尾视图进行处理
+ 
+ @param view 区尾视图
+ @param section 区尾视图位置
+ @return 处理后的视图
+ */
+- (UIView *)dealWithFooterView:(UIView *)view viewForFooterInSection:(NSInteger)section;
 
 /**
  判断该数据是否已经过时

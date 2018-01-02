@@ -42,29 +42,84 @@
     return self;
 }
 
-/**
- 设置分组区头数据源
- 
- @param datas 数据源
- */
-- (void)setupScrollViewHeaderInSectionsWithDatas:(NSMutableArray *)datas{
 
-    _cellManager.headerSectionDataList = datas;
-}
 
 /**
- 设置分组区尾数据源
  
- @param datas 数据源
+ 滑动过快的时候时间不会闪 (UITableViewCell 或者UICollectionViewCell 数据源方法里实现即可)
+ 
+ @param timeLabel 倒计时视图
+ @return 显示时间
  */
-- (void)setupScrollViewFooterInSectionsWithDatas:(NSMutableArray *)datas{
-    _cellManager.footerSectionDataList = datas;
+- (NSAttributedString *)countDownWithTimeLabel:(ZJJTimeCountDownLabel *)timeLabel{
+    return [self timeStringWithModel:timeLabel.model timeLabel:timeLabel];
 }
 
-// 滑动过快的时候时间不会闪  (tableViewcell数据源方法里实现即可)
-- (NSAttributedString *)countDownWithModel:(id)model timeLabel:(ZJJTimeCountDownLabel *)timeLabel{
-    return [self timeStringWithModel:model timeLabel:timeLabel];
+/**
+
+ 处理区头或区尾视图，使得时间可以进行倒计时
+ @param view 区头或区尾视图
+ @param section 区头或区尾位置
+ @return 处理过区头或区尾视图
+ */
+- (BOOL)setupSectionView:(UIView *)view section:(NSInteger)section{
+
+        BOOL isTimeCountDownLabel = NO;
+        if ([view isKindOfClass:[ZJJTimeCountDownLabel class]]) {
+            isTimeCountDownLabel = YES;
+            ZJJTimeCountDownLabel *timeLabel = (ZJJTimeCountDownLabel *)view;
+            if (timeLabel.model) {
+                timeLabel.attributedText = [self countDownWithTimeLabel:timeLabel];
+            }
+            
+        }
+        
+        for (UIView * contentSubView in view.subviews) {
+            if ([contentSubView isKindOfClass:[ZJJTimeCountDownLabel class]]) {
+                ZJJTimeCountDownLabel *timeLabel = (ZJJTimeCountDownLabel *)contentSubView;
+                isTimeCountDownLabel = YES;
+                if (timeLabel.model) {
+                    timeLabel.attributedText = [self countDownWithTimeLabel:timeLabel];
+                }
+            }
+        }
+    return isTimeCountDownLabel;
 }
+/**
+ 对表格区头视图进行处理
+ 
+ @param view 区头视图
+ @param section 区头视图位置
+ @return 处理后的视图
+ */
+- (UIView *)dealWithHeaderView:(UIView *)view viewForHeaderInSection:(NSInteger)section{
+    
+  return [self dealWithView:view section:section sectionDic:self.cellManager.headerSectionDic];
+}
+
+/**
+ 对表格区尾视图进行处理
+ 
+ @param view 区尾视图
+ @param section 区尾视图位置
+ @return 处理后的视图
+ */
+- (UIView *)dealWithFooterView:(UIView *)view viewForFooterInSection:(NSInteger)section{
+    return [self dealWithView:view section:section sectionDic:self.cellManager.footerSectionDic];
+}
+
+- (UIView *)dealWithView:(UIView *)view section:(NSInteger)section sectionDic:(NSMutableDictionary *)sectionDic{
+    UIView *cacheView = sectionDic[@(section)];
+    if (cacheView) {
+        [self setupSectionView:cacheView section:section];
+        return cacheView;
+    }
+    if ([self setupSectionView:view section:section]) {
+        [sectionDic setObject:view forKey:@(section)];
+    }
+    return view;
+}
+
 //删除cell
 - (void)deleteReloadDataWithModel:(id)model indexPath:(NSIndexPath *)indexPath{
     [_cellManager deleteReloadDataWithModel:model indexPath:indexPath];

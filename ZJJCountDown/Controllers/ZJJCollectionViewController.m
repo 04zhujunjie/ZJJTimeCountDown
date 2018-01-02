@@ -54,8 +54,11 @@ static NSString * const kCollectionViewID = @"collectionView";
 
     ZJJCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([ZJJCollectionViewCell class]) forIndexPath:indexPath];
     WatchModel *model = self.dataList[indexPath.row];
-    cell.timeLabel.indexPath = indexPath;
-    cell.timeLabel.attributedText = [_countDown countDownWithModel:model timeLabel:cell.timeLabel];
+
+    [cell.timeLabel setupCellWithModel:model indexPath:indexPath];
+    //在不设置为过时自动删除情况下 滑动过快的时候时间不会闪
+    cell.timeLabel.attributedText = [_countDown countDownWithTimeLabel:cell.timeLabel];
+    
     cell.watchImageView.image = [UIImage imageNamed:model.imageName];
    
     
