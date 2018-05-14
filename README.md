@@ -11,7 +11,7 @@
 5、分文本显示时间时，支持设置文字大小，来动态设置每个文本宽度   
 6、动态的每个Cell中可支持多个倒计时
 ## 支持pod导入
-pod 'ZJJTimeCountDown', '~> 1.0.1'
+pod 'ZJJTimeCountDown', '~> 1.0.2'
 
 ## 使用注意事项：      
 1、显示倒计时的label要使用ZJJTimeCountDownLabel类或者继承ZJJTimeCountDownLabel类       
