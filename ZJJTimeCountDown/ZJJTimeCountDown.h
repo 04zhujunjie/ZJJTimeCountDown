@@ -73,7 +73,7 @@ typedef NS_ENUM(NSInteger , ZJJCountDownTimeStyle) {
 
 @property (nonatomic ,weak) id <ZJJTimeCountDownDelegate> delegate;
 
-
+@property (nonatomic ,assign) BOOL isFirstViewForSupView;
 /**
  添加倒计时，添加后自动启动定时器 ，一般用于页面上可见少量的定时器
 

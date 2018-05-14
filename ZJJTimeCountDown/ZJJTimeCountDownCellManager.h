@@ -31,6 +31,7 @@
 
 @property (nonatomic ,strong) NSMutableDictionary *headerSectionDic;
 @property (nonatomic ,strong) NSMutableDictionary *footerSectionDic;
+@property (nonatomic ,assign) BOOL isFirstViewForSupView;
 /**
  初始化
 
@@ -46,6 +47,24 @@
  @param indexPath 索引位置
  */
 - (void)deleteReloadDataWithModel:(id)model indexPath:(NSIndexPath *)indexPath;
+
+/**
+ 对表格区头视图进行处理
+ 
+ @param view 区头视图
+ @param section 区头视图位置
+ @return 处理后的视图
+ */
+- (UIView *)dealWithHeaderView:(UIView *)view viewForHeaderInSection:(NSInteger)section;
+
+/**
+ 对表格区尾视图进行处理
+ 
+ @param view 区尾视图
+ @param section 区尾视图位置
+ @return 处理后的视图
+ */
+- (UIView *)dealWithFooterView:(UIView *)view viewForFooterInSection:(NSInteger)section;
 
 - (void)destoryScrollViewTimer;
 

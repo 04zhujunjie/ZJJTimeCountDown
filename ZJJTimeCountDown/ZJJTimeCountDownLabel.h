@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 typedef NS_ENUM(NSInteger ,ZJJTextStlye){
 
     ZJJTextStlyeNormal = 0,
@@ -83,7 +84,7 @@ typedef NS_ENUM(NSInteger ,ZJJTextAlignmentStlye){
 /**
  对应模型中要显示的倒计时的属性字符串（必须要设置,在初始化视图时设置）
  */
-@property (nonatomic ,strong) NSString *timeKey;
+@property (nonatomic ,strong)  NSString *timeKey;
 
 /**
  对应模型

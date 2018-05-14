@@ -26,7 +26,7 @@
 }
 
 - (void)setupTimeLabelP{
-    self.timeLabel.timeKey = @"startTime";
+//    self.timeLabel.timeKey = @"startTime";
     self.timeLabel.jj_description = @"活动已经开始";
     //边框模式
     self.timeLabel.textStyle = ZJJTextStlyeDDHHMMSSChineseBox;

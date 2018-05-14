@@ -119,13 +119,13 @@
             if (headerCount) {
                 UIView *headerView = self.headerSectionDic[section];
                 if (headerView) {
-                    [self setupTabelTimeLabelWithView:headerView];
+                    [self setupTabelViewHeaderOrFooterTimeLabelWithView:headerView];
                 }
             }
             if (footerCount) {
                 UIView *footerView = self.footerSectionDic[section];
                 if (footerView) {
-                    [self setupTabelTimeLabelWithView:footerView];
+                    [self setupTabelViewHeaderOrFooterTimeLabelWithView:footerView];
                 }
             }
 
@@ -151,74 +151,100 @@
     }
 }
 
-- (void)setupTabelTimeLabelWithView:(UIView *)view{
+- (BOOL)setupTabelViewHeaderOrFooterTimeLabelWithView:(UIView *)view{
 
-    
+    BOOL isTimeCountDownLabel = NO;
     if ([view isKindOfClass:[ZJJTimeCountDownLabel class]]) {
-        
+        isTimeCountDownLabel = YES;
         ZJJTimeCountDownLabel *timeLabel = (ZJJTimeCountDownLabel *)view;
         if (timeLabel.model) {
            [self setupAttributedText:timeLabel model:timeLabel.model];
         }
-        
         NSLog(@"====++++++=timeLabel.text===%@====",timeLabel.text);
     }
-    
+    if ([self setupTableViewHeaderOrFooterWithSubView:view]) {
+        return YES;
+    }
+    return isTimeCountDownLabel;
+}
+
+- (BOOL)setupTableViewHeaderOrFooterWithSubView:(UIView *)view{
+   
+     BOOL isTimeCountDownLabel = NO;
     for (UIView * contentSubView in view.subviews) {
         if ([contentSubView isKindOfClass:[ZJJTimeCountDownLabel class]]) {
+            isTimeCountDownLabel = YES;
             ZJJTimeCountDownLabel *timeLabel = (ZJJTimeCountDownLabel *)contentSubView;
             if (timeLabel.model) {
                 [self setupAttributedText:timeLabel model:timeLabel.model];
+            }
+        }else{
+            if (!self.isFirstViewForSupView) {
+                [self setupTableViewHeaderOrFooterWithSubView:contentSubView];
+            }
+        }
+    }
+    return isTimeCountDownLabel;
+}
+
+- (void)setupCellTimeLabelWithContentView:(UIView *)contentView{
+    
+    if (!contentView.subviews.count) {
+        return;
+    }
+    for (UIView * contentSubView in contentView.subviews) {
+        if ([contentSubView isKindOfClass:[ZJJTimeCountDownLabel class]]) {
+            
+            ZJJTimeCountDownLabel *timeLabel = (ZJJTimeCountDownLabel *)contentSubView;
+            [self setupTabelViewCellWithTimeLabel:timeLabel];
+        
+        }else{
+            if (!self.isFirstViewForSupView) {
+               [self setupCellTimeLabelWithContentView:contentSubView];
             }
         }
     }
 }
 
-- (void)setupCellTimeLabelWithContentView:(UIView *)contentView{
+- (void)setupTabelViewCellWithTimeLabel:(ZJJTimeCountDownLabel *)timeLabel{
     
-    for (UIView * contentSubView in contentView.subviews) {
-        if ([contentSubView isKindOfClass:[ZJJTimeCountDownLabel class]]) {
+    id model = nil;
+    if (!_dataList.count) {
+        return;
+    }
+    if ([_dataList[0] isKindOfClass:[NSArray class]]) {
+        
+        if (_dataList.count > timeLabel.indexPath.section) {
             
-            ZJJTimeCountDownLabel *timeLabel = (ZJJTimeCountDownLabel *)contentSubView;
-            id model = nil;
-            if (!_dataList.count) {
+            NSArray *sectionList =_dataList[timeLabel.indexPath.section];
+            if (sectionList.count > timeLabel.indexPath.row) {
+                model = _dataList[timeLabel.indexPath.section][timeLabel.indexPath.row];
+            }else{
                 return;
             }
-            if ([_dataList[0] isKindOfClass:[NSArray class]]) {
-                
-                if (_dataList.count > timeLabel.indexPath.section) {
-                    
-                    NSArray *sectionList =_dataList[timeLabel.indexPath.section];
-                    if (sectionList.count > timeLabel.indexPath.row) {
-                        model = _dataList[timeLabel.indexPath.section][timeLabel.indexPath.row];
-                    }else{
-                        return;
-                    }
-                    
-                }else{
-                    return;
-                }
-            }else {
-                if (_dataList.count > timeLabel.indexPath.row) {
-                    model = _dataList[timeLabel.indexPath.row];
-                }else{
-                    
-                    return;
-                }
-            }
-           
-            if ([self isAutomaticallyDeletedWithModel:model timeLabel:timeLabel]) {
-                
-                if ([self.delegate respondsToSelector:@selector(cellAutomaticallyDeleteWithModel:)]) {
-                    [self.delegate cellAutomaticallyDeleteWithModel:model];
-                }
-                [self deleteReloadDataWithModel:model indexPath:timeLabel.indexPath];
-                [self setupScrollViewTimeLabelText];
-                
-            }else{
-                [self setupAttributedText:timeLabel model:model];
-            }
+            
+        }else{
+            return;
         }
+    }else {
+        if (_dataList.count > timeLabel.indexPath.row) {
+            model = _dataList[timeLabel.indexPath.row];
+        }else{
+            
+            return;
+        }
+    }
+    
+    if ([self isAutomaticallyDeletedWithModel:model timeLabel:timeLabel]) {
+        
+        if ([self.delegate respondsToSelector:@selector(cellAutomaticallyDeleteWithModel:)]) {
+            [self.delegate cellAutomaticallyDeleteWithModel:model];
+        }
+        [self deleteReloadDataWithModel:model indexPath:timeLabel.indexPath];
+        [self setupScrollViewTimeLabelText];
+        
+    }else{
+        [self setupAttributedText:timeLabel model:model];
     }
 }
 
@@ -253,6 +279,44 @@
     }
     [self countDownReloadData];
 }
+
+/**
+ 对表格区头视图进行处理
+ 
+ @param view 区头视图
+ @param section 区头视图位置
+ @return 处理后的视图
+ */
+- (UIView *)dealWithHeaderView:(UIView *)view viewForHeaderInSection:(NSInteger)section{
+    
+    return [self dealWithView:view section:section sectionDic:self.headerSectionDic];
+}
+
+/**
+ 对表格区尾视图进行处理
+ 
+ @param view 区尾视图
+ @param section 区尾视图位置
+ @return 处理后的视图
+ */
+- (UIView *)dealWithFooterView:(UIView *)view viewForFooterInSection:(NSInteger)section{
+    
+    return [self dealWithView:view section:section sectionDic:self.footerSectionDic];
+}
+
+- (UIView *)dealWithView:(UIView *)view section:(NSInteger)section sectionDic:(NSMutableDictionary *)sectionDic{
+    UIView *cacheView = sectionDic[@(section)];
+    if (cacheView) {
+        [self setupTabelViewHeaderOrFooterTimeLabelWithView:view];
+        return cacheView;
+    }
+    if ([self setupTabelViewHeaderOrFooterTimeLabelWithView:view]) {
+        [sectionDic setObject:view forKey:@(section)];
+    }
+    return view;
+}
+
+
 
 //是否是自动删除已过时的时间数据
 - (BOOL)isAutomaticallyDeletedWithModel:(id)model timeLabel:(ZJJTimeCountDownLabel *)timeLabel{
