@@ -197,6 +197,7 @@ _countDown = [[ZJJTimeCountDown alloc] initWithScrollView:self.tableView dataLis
 
 ```
 
-## 问题
-在动态Cell上，设置ZJJTimeCountDownLabel的isAutomaticallyDeleted属性值为YES时（过时的数据自动删除），如果Cell在滑动快的时候，过时的数据未能及时删除
+## 其他 
+QQ交流群：653170030     
+
 
