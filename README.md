@@ -195,9 +195,6 @@ _countDown = [[ZJJTimeCountDown alloc] initWithScrollView:self.tableView dataLis
     [self.countDown destoryTimer];
 }
 
-```
-
-## 其他 
-QQ交流群：653170030     
+```    
 
 
