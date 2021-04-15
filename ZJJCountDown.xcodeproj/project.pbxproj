@@ -62,6 +62,7 @@
 		8BB534B71F1609FE00A21086 /* ZJJTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB534A91F1609FE00A21086 /* ZJJTableViewCell.m */; };
 		8BB534BB1F160F9800A21086 /* ZJJVerificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB534B91F160F9800A21086 /* ZJJVerificationController.m */; };
 		8BB534BC1F160F9800A21086 /* ZJJVerificationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BB534BA1F160F9800A21086 /* ZJJVerificationController.xib */; };
+		FF63A1152626DACE00731B7F /* ZJJTimeCountDownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FF63A1142626DACE00731B7F /* ZJJTimeCountDownButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,6 +187,8 @@
 		8BB534B81F160F9800A21086 /* ZJJVerificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJJVerificationController.h; sourceTree = "<group>"; };
 		8BB534B91F160F9800A21086 /* ZJJVerificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJJVerificationController.m; sourceTree = "<group>"; };
 		8BB534BA1F160F9800A21086 /* ZJJVerificationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJJVerificationController.xib; sourceTree = "<group>"; };
+		FF63A1132626DACE00731B7F /* ZJJTimeCountDownButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZJJTimeCountDownButton.h; sourceTree = "<group>"; };
+		FF63A1142626DACE00731B7F /* ZJJTimeCountDownButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJJTimeCountDownButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +233,8 @@
 				8B451E761FC266CF005789CD /* ZJJTimeCountDownLabelManager.m */,
 				8B451E771FC266CF005789CD /* ZJJTimeCountDownLabelTextStlyeTool.h */,
 				8B451E781FC266CF005789CD /* ZJJTimeCountDownLabelTextStlyeTool.m */,
+				FF63A1132626DACE00731B7F /* ZJJTimeCountDownButton.h */,
+				FF63A1142626DACE00731B7F /* ZJJTimeCountDownButton.m */,
 			);
 			path = ZJJTimeCountDown;
 			sourceTree = SOURCE_ROOT;
@@ -516,6 +521,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -605,6 +611,7 @@
 				8BB534B61F1609FE00A21086 /* ZJJOneTimeCountDownLabel.m in Sources */,
 				8BB5345E1F14A19D00A21086 /* AFURLResponseSerialization.m in Sources */,
 				8BB534671F14A19D00A21086 /* UIImageView+AFNetworking.m in Sources */,
+				FF63A1152626DACE00731B7F /* ZJJTimeCountDownButton.m in Sources */,
 				8BB534231F147E6300A21086 /* UIViewController+JMCollectionView.m in Sources */,
 				8BB534AA1F1609FE00A21086 /* BaseTableViewController.m in Sources */,
 				8BB533D21F1313C700A21086 /* main.m in Sources */,

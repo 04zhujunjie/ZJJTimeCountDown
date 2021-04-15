@@ -7,20 +7,12 @@
 //
 
 #import "ZJJVerificationController.h"
-#import "ZJJTimeCountDownLabel.h"
-#import "ZJJTimeCountDown.h"
-#import "ZJJTimeCountDownDateTool.h"
+#import "ZJJTimeCountDownButton.h"
+@interface ZJJVerificationController ()
 
-static NSString *const kBtnTitle = @"点击获取验证码";
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *btnWidthConstraint;
 
-@interface ZJJVerificationController ()<ZJJTimeCountDownDelegate>{
-
-    ZJJTimeCountDown *_countDown;
-}
-
-
-
-@property (weak, nonatomic) IBOutlet UIButton *verificationBtn;
+@property (weak, nonatomic) IBOutlet ZJJTimeCountDownButton *countDownBtn;
 
 @end
 
@@ -28,53 +20,40 @@ static NSString *const kBtnTitle = @"点击获取验证码";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.verificationBtn setTitle:kBtnTitle forState:UIControlStateNormal];
-}
-
-
-- (IBAction)verificationBtn:(id)sender {
-    //向服务器发送请求
-    [self requestData];
-}
-
-- (void)requestData{
-
-    //成功接收服务器数据后，进行倒计时
-    if (1) {
-        self.verificationBtn.userInteractionEnabled = NO;
-        [self addTime];
-    }
-}
-
-- (void)addTime{
     
-    if (!_countDown) {
-        _countDown = [ZJJTimeCountDown new];
-        _countDown.delegate = self;
-    }
-    ZJJTimeCountDownLabel *timeLabel = [ZJJTimeCountDownLabel new];
-    [_countDown addTimeLabel:timeLabel time:[ZJJTimeCountDownDateTool dateByAddingSeconds:3 timeStyle:ZJJCountDownTimeStyleNormal]];
+    self.countDownBtn.normalTitleColor = UIColor.blackColor;
+    self.countDownBtn.normalBackgroundColor = UIColor.grayColor;
+    self.countDownBtn.downBackgroundColor = UIColor.greenColor;
+    self.countDownBtn.downTitleColor = UIColor.whiteColor;
+   
+    //设置按钮的圆角，边框的颜色和大小
+    [self.countDownBtn setCornerRadius:self.countDownBtn.frame.size.height/2.0 downBorderColor:UIColor.blueColor borderColor:UIColor.blackColor borderWidth:2];
+    //设置按钮的文本，isSS表示倒计时小于10时，前面是否补0，YES表示补0
+    [self.countDownBtn setTitle:@"点击获取验证码" countDownTitle:@"{}s" replaceCharacter:@"{}" isSS:NO];
+    //设置按钮的宽度
+    [self setupCountDownBtnWidth];
 }
 
 
-- (void)dateWithTimeLabel:(ZJJTimeCountDownLabel *)timeLabel timeCountDown:(ZJJTimeCountDown *)timeCountDown{
-
-    if (timeLabel.totalSeconds) {
-        
-        [self.verificationBtn setTitle:[NSString stringWithFormat:@"(%.2ld)后可重新获取",timeLabel.totalSeconds] forState:UIControlStateNormal];
-        [self.verificationBtn setTitle:[NSString stringWithFormat:@"(%.2ld)后可重新获取",timeLabel.totalSeconds] forState:UIControlStateHighlighted];
-        
-    }else{
-        
-        [self.verificationBtn setTitle:kBtnTitle forState:UIControlStateNormal];
-        self.verificationBtn.userInteractionEnabled = YES;
-    }
+- (IBAction)countDownBtnClick:(ZJJTimeCountDownButton *)sender {
+   
+    __weak typeof(self) weakSelf = self;
+    [sender startCountDownWidthSecond:3 handler:^(ZJJTimeCountDownButton *countDownButton, NSInteger second) {
+        __strong typeof(self) strongSelf = weakSelf;
+        CGFloat textWidth = [countDownButton getTextWidth];
+        NSLog(@"剩余的秒数：%ld===文本的宽度：%lf",second,textWidth);
+        //设置按钮的宽度
+        [strongSelf setupCountDownBtnWidth];
+    }];
+}
+//设置按钮的宽度
+- (void)setupCountDownBtnWidth{
+    CGFloat btnWidth = MAX(70, [self.countDownBtn getTextWidth]+25);
+    //设置按钮的宽度
+    self.btnWidthConstraint.constant = btnWidth;
+    
 }
 
-
-- (void)dealloc{
-    [_countDown destoryTimer];
-}
 
 
 - (void)didReceiveMemoryWarning {
