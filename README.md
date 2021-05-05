@@ -51,6 +51,7 @@ typedef NS_ENUM(NSInteger ,ZJJTextAlignmentStlye){
 };
 ```
 
+
 ZJJTimeCountDown 支持时间格式:
 ```
 typedef NS_ENUM(NSInteger , ZJJCountDownTimeStyle) {
