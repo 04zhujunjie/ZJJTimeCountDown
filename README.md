@@ -3,7 +3,7 @@
 ## 效果图
 ![image](https://github.com/04zhujunjie/ZJJTimeCountDown/blob/master/Screenshot/ZJJCountDown.gif)
 
-## 特点：
+## 特点： 
 1、已封装，支持自定义     
 2、支持文本各种对齐模式        
 3、各种效果都可以通过设置ZJJTimeCountDownLabel类属性来实现        
